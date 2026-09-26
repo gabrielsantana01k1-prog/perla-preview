@@ -3,11 +3,17 @@
    build step nem CSS compartilhado por import; qualquer mudança de marca no index.html precisa
    ser replicada aqui manualmente (ver CLAUDE.md / PROGRESS.md). */
 :root{
-  color-scheme: dark;
-  --onix:#0E0D0C; --onix-2:#141210;
-  --perola:#EFE7D6; --perola-2:#B3A994; --perola-3:#89806F;
+  color-scheme: light;
+  /* Tema claro (redesign 26/09) — mesmo pivô do index.html: os nomes --onix/--perola foram
+     mantidos, só os VALORES viraram os do tema claro. Ver .lightbox mais abaixo, que re-declara
+     esses tokens localmente para continuar escura de propósito (visualização de foto em tela
+     cheia) — é o único componente desta folha que precisa disso. */
+  --onix:#F4EEE6; --onix-2:#FFFDF8;
+  --perola:#231A17; --perola-2:#5C4F46; --perola-3:#6F6156;
   --ouro:#C2A56E; --ouro-deep:#9C8A5E;
-  --linha:rgba(239,231,214,.10); --linha-2:rgba(239,231,214,.18);
+  --linha:rgba(35,26,23,.14); --linha-2:rgba(35,26,23,.22);
+  /* Papel/tinta (mesmos tokens, agora iguais a --onix/--perola) */
+  --papel:#F4EEE6; --tinta:#231A17; --tinta-2:#5C4F46; --linha-p:rgba(35,26,23,.14); --ouro-paper:#8F7442; --ouro-paper-texto:#7A6237; /* variante escurecida p/ texto pequeno (4.5:1 em --papel) */
   --display:"Newsreader", "Iowan Old Style", Georgia, serif;
   --num:"Cormorant Garamond", "Iowan Old Style", Georgia, serif;
   --gutter:clamp(20px,5vw,72px);
@@ -30,7 +36,7 @@ img{max-width:100%;display:block}
 :focus-visible{outline:1px solid var(--ouro);outline-offset:4px}
 
 /* ============ NAV (idêntico ao index.html) ============ */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(14,13,12,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(244,238,230,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
 .nav .shell{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
 .wordmark{display:flex;align-items:center;gap:12px}
 .wordmark img{width:40px;height:40px;border-radius:50%;flex:0 0 auto;object-fit:cover}
@@ -41,8 +47,8 @@ img{max-width:100%;display:block}
 .nav ul a{transition:color .3s ease}
 .nav ul a:hover{color:var(--perola)}
 .btn{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:15px 22px;border:1px solid var(--ouro);color:var(--perola);transition:background .35s ease,color .35s ease}
-.btn:hover{background:var(--ouro);color:var(--onix)}
-.btn.solid{background:var(--ouro);color:var(--onix)}
+.btn:hover{background:var(--ouro);color:var(--tinta)}
+.btn.solid{background:var(--ouro);color:var(--tinta)}
 .btn.solid:hover{background:var(--perola)}
 .btn .arr{font-family:var(--num);font-style:italic;font-size:18px;letter-spacing:0;text-transform:none}
 .link{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--perola-2);border-bottom:1px solid var(--linha-2);padding-bottom:4px;transition:color .3s ease,border-color .3s ease}
@@ -56,7 +62,7 @@ img{max-width:100%;display:block}
 .nav-mobile.open{display:block}
 .nav-mobile ul{display:block;list-style:none;margin:0;padding:0}
 .nav-mobile li{border-bottom:1px solid var(--linha)}
-.nav-mobile ul a{display:block;padding:20px 2px;font-family:var(--display);font-size:clamp(22px,6vw,28px);color:var(--perola)}
+.nav-mobile ul a{display:block;padding:20px 2px;font-family:var(--display);font-size:clamp(22px,6vw,28px);color:#EFE7D6}
 .nav-mobile .btn{margin-top:28px;justify-content:center;width:100%}
 body.nav-open{overflow:hidden}
 @media (max-width:900px){.nav>.shell>ul,.nav>.shell>.btn{display:none}.nav-burger{display:flex}}
@@ -76,23 +82,39 @@ body.nav-open{overflow:hidden}
 .timeline button:hover{color:var(--ouro)}
 
 /* ============ GALERIA POR ETAPA ============ */
-.etapa-bloco{padding-block:clamp(40px,6vw,72px);border-bottom:1px solid var(--linha);scroll-margin-top:96px}
+/* Todas as fotos de cada etapa ficam na própria página, sempre visíveis — nada aqui depende de
+   clique nem de animação para aparecer (a revelação ao rolar é usada só em outras seções do site,
+   nunca na galeria: script lento, bloqueado ou com erro nunca pode deixar uma foto invisível). */
+.etapa-bloco{padding-block:clamp(40px,6vw,72px);border-bottom:1px solid var(--linha);scroll-margin-top:104px}
 .etapa-bloco:last-of-type{border-bottom:0}
 .etapa-bloco h2{font-size:clamp(22px,2.6vw,30px);margin-bottom:28px}
-.etapa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px)}
-.etapa-grid figure{margin:0;grid-column:span 3}
-.etapa-grid figure.v{grid-column:span 1}
-.etapa-grid figure.h{grid-column:span 2}
-@media (max-width:720px){.etapa-grid figure.v,.etapa-grid figure.h{grid-column:span 3}}
-.etapa-grid .frame{position:relative;background:var(--onix-2);border:1px solid var(--linha)}
-.etapa-grid img{width:100%;height:auto;cursor:zoom-in}
-.etapa-grid figcaption{margin-top:10px;font-size:var(--fs-meta);color:var(--perola-3)}
-.selo-3d{position:absolute;top:12px;left:12px;z-index:2;background:rgba(14,13,12,.86);border:1px solid var(--ouro);color:var(--ouro);font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:6px 10px}
 
-/* Rua Andaluzita e qualquer etapa cujas fotos sejam pequenas (frame de vídeo, <=480px de largura):
-   grade de miniaturas densa, nunca em destaque largo — regra explícita da especificação. */
-.etapa-grid.mini{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-.etapa-grid.mini figure{grid-column:span 1 !important}
+/* Grade responsiva real: até 3 colunas no desktop, 2 no tablet, 1 no celular — número de colunas
+   por bloco nunca passa do número de fotos daquele bloco (uma foto sozinha não fica esticada numa
+   grade de 3, nem encolhida numa coluna estreita cercada de vazio). `cols-N` é calculado no gerador
+   a partir de min(fotos.length, 3). */
+.etapa-grid{display:grid;gap:clamp(16px,2.4vw,28px);justify-items:stretch}
+.etapa-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.etapa-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.etapa-grid.cols-1{grid-template-columns:1fr;max-width:640px;margin-inline:auto}
+@media (max-width:900px){.etapa-grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.etapa-grid.cols-3,.etapa-grid.cols-2{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+
+.etapa-grid figure{margin:0}
+.etapa-grid .frame{position:relative;background:var(--onix-2);border:1px solid var(--linha);display:block}
+.etapa-grid img{width:100%;height:auto;cursor:zoom-in;display:block}
+.etapa-grid figcaption{margin-top:10px;font-size:var(--fs-meta);color:var(--perola-3)}
+.selo{position:absolute;top:12px;left:12px;z-index:2;background:rgba(14,13,12,.86);border:1px solid var(--ouro);color:var(--ouro);font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:6px 10px}
+.selo.entregue{left:auto;right:12px;border-color:var(--linha-2);color:var(--perola-2)}
+
+/* Etapas com fotos pequenas na origem (frame de vídeo/Instagram, <=480px de largura, como a Rua
+   Andaluzita): nunca ampliar além do tamanho real. Layout flex + centralizado em vez de grid, para
+   1 ou 2 fotos nunca sobrarem "sozinhas à esquerda com vazio ao lado" — o próprio flex-wrap resolve
+   isso naturalmente, qualquer que seja a quantidade. */
+.etapa-grid.mini{display:flex;flex-wrap:wrap;justify-content:center}
+/* Tamanho o mais próximo possível do original (a var(--fw), setada por foto, é a largura real do
+   arquivo) — nunca amplia além disso. 340px é só o ponto de partida do flex antes do cap. */
+.etapa-grid.mini figure{flex:0 1 340px;max-width:min(100%,var(--fw,340px))}
 
 /* ============ CTA FINAL ============ */
 .obra-cta{padding-block:clamp(64px,9vw,120px);text-align:center;border-top:1px solid var(--linha)}
@@ -108,8 +130,9 @@ body.nav-open{overflow:hidden}
 .obra-prox .tt{font-size:clamp(18px,2.4vw,24px)}
 @media (max-width:600px){.obra-prox{grid-template-columns:1fr}.obra-prox a:last-child{border-left:0;border-top:1px solid var(--linha);text-align:left}}
 
-/* ============ LIGHTBOX ============ */
-.lightbox{position:fixed;inset:0;z-index:50;display:none;background:rgba(14,13,12,.97);backdrop-filter:blur(6px)}
+/* ============ LIGHTBOX (continua escura de propósito — visualização de foto em tela cheia) ============ */
+.lightbox{--onix:#0E0D0C;--onix-2:#141210;--perola:#EFE7D6;--perola-2:#B3A994;--perola-3:#89806F;--linha:rgba(239,231,214,.10);--linha-2:rgba(239,231,214,.18);
+  position:fixed;inset:0;z-index:50;display:none;background:rgba(14,13,12,.97);backdrop-filter:blur(6px)}
 .lightbox.open{display:flex;align-items:center;justify-content:center}
 .lightbox figure{margin:0;max-width:min(94vw,1100px);max-height:88vh;text-align:center}
 .lightbox img{max-width:100%;max-height:78vh;width:auto;height:auto;margin:0 auto;object-fit:contain}
@@ -123,17 +146,68 @@ body.nav-open{overflow:hidden}
 .lightbox .contador{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:var(--fs-meta);color:var(--perola-3);letter-spacing:.1em}
 @media (max-width:600px){.lightbox .seta{font-size:30px;padding:10px}}
 
-/* ============ RODAPÉ (idêntico ao index.html) ============ */
-footer{padding-block:56px}
-footer .shell{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;font-size:var(--fs-meta);color:var(--perola-3)}
-footer b{display:block;color:var(--perola-2);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-footer a{display:block;margin-top:2px;transition:color .3s ease}
-footer a:hover{color:var(--perola)}
-footer .legal{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:24px;padding-top:24px;border-top:1px solid var(--linha)}
-@media (max-width:820px){footer .shell{grid-template-columns:1fr 1fr}}
-@media (max-width:480px){footer .shell{grid-template-columns:1fr}}
+/* ============ FAIXA DE CONTATO + RODAPÉ (tema claro — idêntico ao index.html) ============ */
+.paper{background:var(--papel);color:var(--tinta)}
+.cta-contato{text-align:left;padding-block:clamp(56px,8vw,96px)}
+.cta-contato h2{font-size:clamp(28px,4vw,44px);line-height:1.1;max-width:16ch;color:var(--tinta)}
+.cta-contato p{color:var(--tinta-2);max-width:48ch;margin-top:18px;font-size:var(--fs-support)}
+.cta-contato .ctas{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:32px}
+.btn-contato{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:500;padding:17px 28px;min-height:44px;border-radius:2px;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .15s ease,box-shadow .2s ease}
+.btn-contato svg{width:20px;height:20px;flex:0 0 auto}
+.btn-contato.principal{background:var(--ouro-paper);color:#FFFDF8;border:1px solid var(--ouro-paper)}
+.btn-contato.principal:hover{background:#7A6237;box-shadow:0 6px 18px rgba(35,26,23,.18);transform:translateY(-1px)}
+.btn-contato:active{transform:translateY(0);box-shadow:none}
+.btn-contato:focus-visible{outline:2px solid var(--ouro-paper);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.btn-contato{transition:none}.btn-contato:hover{transform:none}}
 
-/* reveal ao rolar — mesmo mecanismo do index.html */
+footer.rodape-claro{padding-block:56px 28px;border-top:1px solid var(--linha-p)}
+footer.rodape-claro .shell{display:grid;grid-template-columns:1.1fr 1fr 1.1fr;gap:48px}
+.footer-titulo{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta);font-weight:600;margin-bottom:16px}
+.rodape-marca .wordmark-lg{display:flex;align-items:center;gap:14px}
+.rodape-marca .wordmark-lg img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--linha-p)}
+.rodape-marca .wordmark-lg b{font-family:var(--display);font-weight:600;font-size:21px;color:var(--tinta)}
+.rodape-marca p{margin-top:16px;max-width:32ch;font-size:var(--fs-support);color:var(--tinta-2)}
+
+.rede-cards{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:640px){.rede-cards{grid-template-columns:1fr 1fr}}
+.rede-card{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--linha-p);background:#FFFDF8;transition:border-color .2s ease,transform .15s ease,box-shadow .2s ease}
+.rede-card:hover{border-color:var(--ouro-paper);box-shadow:0 6px 18px rgba(35,26,23,.08);transform:translateY(-1px)}
+.rede-card:focus-visible{outline:2px solid var(--ouro-paper);outline-offset:2px}
+.rede-card:active{transform:translateY(0)}
+.rede-icon{flex:0 0 auto;width:48px;height:48px;border-radius:50%;background:var(--papel);display:flex;align-items:center;justify-content:center;color:var(--ouro-paper)}
+.rede-icon svg{width:24px;height:24px}
+.rede-info{flex:1 1 auto;min-width:0}
+.rede-info b{display:block;font-size:14px;color:var(--tinta)}
+.rede-info span{display:block;font-size:12.5px;color:var(--tinta-2);margin-top:2px}
+.rede-seta{flex:0 0 auto;font-family:var(--num);font-style:italic;font-size:19px;color:var(--ouro-paper);transition:transform .2s ease}
+.rede-card:hover .rede-seta{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){.rede-card,.rede-seta{transition:none}.rede-card:hover{transform:none}.rede-card:hover .rede-seta{transform:none}}
+
+.contato-linha{display:flex;align-items:center;gap:12px;min-height:44px;color:var(--tinta);font-size:14.5px;transition:color .2s ease}
+.contato-linha:hover{color:var(--ouro-paper-texto)}
+.contato-linha .contato-icon{flex:0 0 auto;width:20px;height:20px;color:var(--ouro-paper)}
+.endereco-bloco{display:flex;gap:12px;margin-top:12px;color:var(--tinta-2);font-size:var(--fs-support)}
+.endereco-bloco .contato-icon{flex:0 0 auto;width:20px;height:20px;margin-top:2px;color:var(--ouro-paper)}
+.endereco-bloco address{font-style:normal}
+.como-chegar{display:inline-block;margin-top:8px;margin-left:32px;font-size:12.5px;letter-spacing:.06em;color:var(--ouro-paper-texto);border-bottom:1px solid transparent;transition:border-color .2s ease}
+.como-chegar:hover{border-color:var(--ouro-paper-texto)}
+
+footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);margin-top:32px;padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:var(--tinta-2)}
+@media (max-width:900px){footer.rodape-claro .shell{grid-template-columns:1fr 1fr;row-gap:36px}.rodape-marca{grid-column:1/-1}}
+@media (max-width:560px){footer.rodape-claro .shell{grid-template-columns:1fr}}
+
+.barra-contato-mobile{display:none}
+@media (max-width:640px){
+  .barra-contato-mobile{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--papel);border-top:1px solid var(--linha-p);padding:10px 16px env(safe-area-inset-bottom,10px)}
+  .barra-contato-mobile a{flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:10px;min-height:44px;background:var(--ouro-paper);color:#FFFDF8;font-size:14px;font-weight:500}
+  .barra-contato-mobile svg{width:18px;height:18px}
+  body.tem-barra-contato{padding-bottom:64px}
+  body.esconder-barra-contato .barra-contato-mobile{display:none}
+}
+
+/* reveal ao rolar — mesmo mecanismo do index.html. Nunca usado na galeria de fotos (ver acima):
+   só em blocos decorativos onde, mesmo que o JS falhe, o noscript abaixo garante que o conteúdo
+   nunca fica permanentemente invisível. */
 [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.1,1),transform .7s cubic-bezier(.2,.7,.1,1)}
 [data-reveal].in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}}
