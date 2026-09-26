@@ -1,0 +1,37 @@
+# Perla Construtora — hardening básico para hospedagem Apache/cPanel.
+# Não tem efeito no GitHub Pages (usado só para a prévia atual) — só passa a valer
+# quando o site for publicado no domínio final via cPanel.
+
+# Nunca listar o conteúdo de uma pasta sem index.html
+Options -Indexes
+
+# Nunca servir os arquivos internos de gestão do projeto, se algum dia forem
+# publicados por engano no mesmo diretório do site (defesa extra, redundante
+# com a regra de nunca copiá-los para o repo público).
+<FilesMatch "^(CLAUDE\.md|PROGRESS\.md)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Cache de assets estáticos (nomes de arquivo não têm hash — cache moderado,
+# não "immutable", para uma troca de foto/CSS não ficar presa no cache do visitante)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/webp "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+</IfModule>
+
+# Descomentar quando o domínio final tiver SSL configurado no cPanel:
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
