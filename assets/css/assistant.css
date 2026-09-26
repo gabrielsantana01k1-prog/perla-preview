@@ -1,0 +1,103 @@
+/* ============ ASSISTENTE PERLA (widget de pré-atendimento) ============
+   Fluxo guiado determinístico (perguntas/botões/texto livre) que organiza um resumo e monta um
+   link de WhatsApp — não há serviço de IA real por trás (ver assistant.js). Reaproveita os tokens
+   de cor já declarados em :root pelo próprio site (--onix/--perola/--ouro/--linha-p etc.), então
+   funciona igual na home (tema claro) e nas páginas de projeto sem redeclarar nada.
+   z-index: fica sempre abaixo do menu mobile (.nav-mobile, z9) e do lightbox das obras (z50) — se
+   qualquer um dos dois abrir por cima, o widget correspondente é coberto naturalmente. */
+
+.pa-fab{position:fixed;right:20px;bottom:20px;z-index:8;width:56px;height:56px;border-radius:50%;
+  border:1px solid var(--ouro-paper,var(--ouro));background:var(--ouro-paper,var(--ouro));color:#FFFDF8;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;appearance:none;
+  box-shadow:0 10px 26px rgba(35,26,23,.22);transition:transform .2s ease,box-shadow .2s ease}
+.pa-fab:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(35,26,23,.28)}
+.pa-fab:focus-visible{outline:2px solid var(--ouro);outline-offset:3px}
+.pa-fab svg{width:24px;height:24px}
+.pa-fab .pa-fab-fechar{display:none}
+.pa-fab[aria-expanded="true"] .pa-fab-abrir{display:none}
+.pa-fab[aria-expanded="true"] .pa-fab-fechar{display:block}
+@media (max-width:640px){.pa-fab{right:16px;bottom:calc(64px + env(safe-area-inset-bottom,0px) + 14px)}}
+body.pa-fab-oculto .pa-fab,body.pa-fab-oculto .pa-invite{display:none}
+
+/* Convite (balão) — mesma âncora do botão, some com um clique em "Começar" ou no × */
+.pa-invite{position:fixed;right:20px;bottom:86px;z-index:8;max-width:272px;background:var(--onix-2,#FFFDF8);
+  border:1px solid var(--linha-p);box-shadow:0 14px 34px rgba(35,26,23,.14);padding:16px 16px 14px;
+  display:none}
+.pa-invite.mostrar{display:block}
+@media (max-width:640px){.pa-invite{right:16px;bottom:calc(64px + env(safe-area-inset-bottom,0px) + 82px);max-width:calc(100vw - 32px)}}
+@media (prefers-reduced-motion:no-preference){
+  .pa-invite.mostrar{animation:pa-surgir .3s cubic-bezier(.2,.7,.1,1) both}
+  @keyframes pa-surgir{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+.pa-invite p{margin:0;font-size:14px;line-height:1.45;color:var(--tinta,var(--perola));font-family:var(--display)}
+.pa-invite-acoes{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
+.pa-invite-comecar{appearance:none;cursor:pointer;border:1px solid var(--ouro-paper,var(--ouro));background:var(--ouro-paper,var(--ouro));
+  color:#FFFDF8;font-size:12px;letter-spacing:.06em;padding:9px 16px;font-family:inherit;font-weight:500}
+.pa-invite-comecar:hover{background:var(--tinta,#332921)}
+.pa-invite-fechar{appearance:none;cursor:pointer;border:0;background:none;color:var(--tinta-2,var(--perola-3));width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.pa-invite-fechar svg{width:14px;height:14px}
+.pa-invite button:focus-visible{outline:2px solid var(--ouro);outline-offset:2px}
+
+/* Painel do chat */
+.pa-panel{position:fixed;right:20px;bottom:86px;z-index:8;width:min(376px,calc(100vw - 32px));
+  height:min(560px,calc(100vh - 120px));display:none;flex-direction:column;background:var(--onix-2,#FFFDF8);
+  border:1px solid var(--linha-p);box-shadow:0 20px 50px rgba(35,26,23,.22)}
+.pa-panel.aberto{display:flex}
+@media (max-width:640px){
+  .pa-panel{right:0;left:0;bottom:0;width:100%;height:min(78vh,100dvh - 64px);border-left:0;border-right:0;border-bottom:0}
+}
+.pa-cabecalho{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--linha-p);flex:0 0 auto}
+.pa-cabecalho .pa-avatar{width:30px;height:30px;border-radius:50%;background:var(--ouro-paper,var(--ouro));color:#FFFDF8;
+  display:flex;align-items:center;justify-content:center;font-family:var(--num);font-style:italic;font-size:15px;flex:0 0 auto}
+.pa-cabecalho .pa-titulos{flex:1 1 auto;min-width:0}
+.pa-cabecalho b{display:block;font-size:14px;color:var(--tinta,var(--perola))}
+.pa-cabecalho span{display:block;font-size:11px;color:var(--tinta-2,var(--perola-3))}
+.pa-acao-topo{appearance:none;cursor:pointer;border:0;background:none;color:var(--tinta-2,var(--perola-3));width:30px;height:30px;
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.pa-acao-topo:hover{color:var(--tinta,var(--perola))}
+.pa-acao-topo svg{width:15px;height:15px}
+.pa-acao-topo:focus-visible,.pa-quick button:focus-visible,.pa-enviar:focus-visible,.pa-campo textarea:focus-visible{outline:2px solid var(--ouro);outline-offset:2px}
+
+.pa-aviso{flex:0 0 auto;padding:10px 16px;font-size:11px;line-height:1.4;color:var(--tinta-2,var(--perola-3));
+  background:rgba(194,165,110,.08);border-bottom:1px solid var(--linha-p)}
+
+.pa-corpo{flex:1 1 auto;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:12px;min-height:0}
+.pa-msg{max-width:86%;font-size:13.5px;line-height:1.5;padding:10px 13px;border:1px solid var(--linha-p)}
+.pa-msg.bot{align-self:flex-start;background:var(--onix,#F4EEE6);color:var(--tinta,var(--perola));border-bottom-left-radius:0}
+.pa-msg.user{align-self:flex-end;background:var(--ouro-paper,var(--ouro));color:#FFFDF8;border-color:transparent;border-bottom-right-radius:0}
+.pa-msg.user *{color:inherit}
+
+.pa-quick{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start;max-width:100%}
+.pa-quick button{appearance:none;cursor:pointer;font-family:inherit;font-size:12.5px;padding:8px 14px;
+  border:1px solid var(--linha-p);background:#FFFDF8;color:var(--tinta,var(--perola));transition:border-color .2s ease,background-color .2s ease}
+.pa-quick button:hover{border-color:var(--ouro-paper,var(--ouro))}
+.pa-quick button.selecionada{background:var(--ouro-paper,var(--ouro));border-color:var(--ouro-paper,var(--ouro));color:#FFFDF8}
+
+.pa-rodape{flex:0 0 auto;border-top:1px solid var(--linha-p);padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.pa-nav-rodape{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.pa-link-rodape{appearance:none;cursor:pointer;border:0;background:none;font-family:inherit;font-size:11.5px;
+  letter-spacing:.03em;color:var(--ouro-paper-texto,var(--ouro-deep));padding:4px 2px;text-decoration:underline;text-underline-offset:2px}
+.pa-link-rodape:disabled{opacity:.4;cursor:default;text-decoration:none}
+.pa-campo{display:flex;align-items:flex-end;gap:8px}
+.pa-campo label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pa-campo textarea{flex:1 1 auto;resize:none;max-height:88px;font-family:inherit;font-size:13.5px;line-height:1.4;
+  padding:9px 12px;border:1px solid var(--linha-p);background:#FFFDF8;color:var(--tinta,var(--perola))}
+.pa-enviar{appearance:none;cursor:pointer;flex:0 0 auto;width:38px;height:38px;border:1px solid var(--ouro-paper,var(--ouro));
+  background:var(--ouro-paper,var(--ouro));color:#FFFDF8;display:flex;align-items:center;justify-content:center}
+.pa-enviar:disabled{opacity:.45;cursor:default}
+.pa-enviar svg{width:15px;height:15px}
+
+/* Resumo final */
+.pa-resumo{border:1px solid var(--linha-p);background:var(--onix,#F4EEE6);padding:12px 14px;font-size:12.5px;
+  line-height:1.65;color:var(--tinta-2,var(--perola-3));white-space:pre-wrap}
+.pa-resumo b{color:var(--tinta,var(--perola))}
+.pa-cta-final{display:flex;flex-direction:column;gap:8px;align-self:stretch}
+.pa-btn-principal{appearance:none;cursor:pointer;text-align:center;font-family:inherit;font-size:13px;font-weight:500;
+  padding:11px 16px;border:1px solid var(--ouro-paper,var(--ouro));background:var(--ouro-paper,var(--ouro));color:#FFFDF8;text-decoration:none;display:block}
+.pa-btn-secundario{appearance:none;cursor:pointer;text-align:center;font-family:inherit;font-size:12.5px;
+  padding:9px 16px;border:1px solid var(--linha-p);background:none;color:var(--tinta,var(--perola))}
+
+@media (prefers-reduced-motion:no-preference){
+  .pa-panel{transition:opacity .2s ease,transform .2s ease}
+}
