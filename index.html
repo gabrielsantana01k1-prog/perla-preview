@@ -176,6 +176,31 @@ section[id]{scroll-margin-top:88px}
 }
 @media (prefers-reduced-motion:reduce){.marquee-strip{overflow-x:auto}}
 
+/* ============ VÍDEOS DE FUNDO (decorativos, ilustrativos) ============
+   Usados em #custo, #metodo, #depoimentos (véu marfim entre vídeo e conteúdo) e no cartão do
+   contato (sem véu — é a peça "vitrine" do cartão). O elemento de vídeo só ganha `src` via JS
+   quando a seção fica perto da área visível e o usuário não pediu movimento reduzido (ver o script
+   de vídeos de fundo, no fim da página); sem isso (JS desligado, rede lenta, prefers-reduced-motion,
+   ou falha de reprodução), fica
+   só o poster/imagem estática — nunca uma tela em branco. Textos, legendas e botões continuam
+   elementos reais do HTML por cima; nada é gravado dentro do vídeo. */
+.sec-video{position:relative;isolation:isolate}
+.sec-video.marble::before{content:none}
+.bgvideo{position:absolute;inset:0;z-index:-2;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat}
+.bgvideo-el{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bgvideo-failed .bgvideo-el{display:none}
+.bgvideo-scrim{position:absolute;inset:0;z-index:-1;background:rgba(244,238,230,.86)}
+.bgvideo-controls{position:absolute;top:20px;right:var(--gutter);z-index:2;display:flex;align-items:center;gap:10px}
+.bgvideo-tag{font-size:10.5px;letter-spacing:.1em;color:var(--tinta-2);background:rgba(255,253,248,.85);padding:6px 10px;border:1px solid var(--linha-p);white-space:nowrap}
+.bgvideo-toggle{appearance:none;cursor:pointer;flex:0 0 auto;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,253,248,.85);border:1px solid var(--linha-p);color:var(--tinta);transition:border-color .2s ease,background-color .2s ease}
+.bgvideo-toggle:hover{border-color:var(--ouro-paper)}
+.bgvideo-toggle:focus-visible{outline:1px solid var(--ouro);outline-offset:3px}
+.bgvideo-toggle svg{width:13px;height:13px}
+.bgvideo-toggle .ico-play{display:none}
+.bgvideo-toggle[aria-pressed="true"] .ico-play{display:block}
+.bgvideo-toggle[aria-pressed="true"] .ico-pause{display:none}
+@media (max-width:640px){.bgvideo-controls{right:20px;top:16px;flex-direction:row-reverse}.bgvideo-tag{font-size:9.5px;padding:5px 8px}}
+
 /* ============ O CUSTO (seção clara) ============ */
 .paper{background:var(--papel);color:var(--tinta)}
 .paper .sec-head .tag{border-color:var(--linha-p)}
@@ -185,6 +210,9 @@ section[id]{scroll-margin-top:88px}
 .paper h2{color:var(--tinta)}
 .paper .dot{color:var(--ouro-paper)}
 .split{display:grid;gap:18px}
+/* Com o vídeo de fundo, o gráfico/números/legendas ganham uma superfície opaca própria (cartão
+   marfim) — o véu do vídeo cobre só a área ao redor, nunca esse bloco. */
+.sec-video .split{background:var(--onix-2);border:1px solid var(--linha-p);padding:clamp(22px,4vw,40px);box-shadow:0 14px 34px rgba(35,26,23,.06)}
 .bar{display:grid;grid-template-columns:37fr 63fr;height:clamp(96px,12vw,150px);border:1px solid var(--linha-p)}
 .bar div{display:flex;flex-direction:column;justify-content:space-between;padding:16px 18px}
 .bar .a{background:#2A221E;color:var(--claro-fixo)}
@@ -302,8 +330,10 @@ section[id]{scroll-margin-top:88px}
 
 /* ============ DEPOIMENTOS ============ */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px)}
-.quotes figure{margin:0;display:grid;gap:22px;align-content:start;border-top:1px solid var(--linha);padding-top:26px;transition:border-color .4s ease}
-.quotes figure:hover{border-color:var(--ouro-deep)}
+/* Cartões claros e opacos — com o vídeo de fundo desta seção, o depoimento precisa continuar
+   perfeitamente legível, nunca "flutuando" direto sobre a imagem em movimento. */
+.quotes figure{margin:0;display:grid;gap:22px;align-content:start;background:var(--onix-2);border:1px solid var(--linha-p);padding:28px 26px;box-shadow:0 12px 30px rgba(35,26,23,.06);transition:border-color .4s ease,box-shadow .4s ease}
+.quotes figure:hover{border-color:var(--ouro-deep);box-shadow:0 16px 36px rgba(35,26,23,.1)}
 .quotes .mark{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:64px;line-height:.4;height:22px;display:inline-block;transition:transform .4s cubic-bezier(.2,.7,.1,1)}
 .quotes figure:hover .mark{transform:translateY(-3px)}
 .quotes blockquote{margin:0;font-size:clamp(20px,1.9vw,24px);line-height:1.35;font-weight:400}
@@ -319,6 +349,23 @@ section[id]{scroll-margin-top:88px}
 .cta-contato h2{font-size:clamp(32px,4.6vw,56px);line-height:1.08;max-width:16ch;color:var(--tinta)}
 .cta-contato p{color:var(--tinta-2);max-width:48ch;margin-top:20px;font-size:var(--fs-support)}
 .cta-contato .ctas{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:40px}
+.contato-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,64px);align-items:center}
+@media (max-width:860px){.contato-grid{grid-template-columns:1fr}}
+/* Cartão de vídeo ao lado do "Fale com a Perla" — só este retângulo, nunca o fundo da seção inteira
+   nem atrás do texto/CTA à esquerda. Sem véu marfim (regra é só para as 3 seções acima): aqui o
+   vídeo é a peça "vitrine" do cartão, e a legibilidade da chamada vem do painel opaco no rodapé
+   do cartão, não de um véu por cima do vídeo inteiro. No mobile o cartão empilha logo abaixo do
+   texto/botão (ver ordem no HTML), nunca lá embaixo da seção. */
+.contato-video-card{position:relative;isolation:isolate;overflow:hidden;height:clamp(300px,32vw,420px);border:1px solid var(--linha-p)}
+.contato-video-card .bgvideo-controls{top:14px;right:14px}
+@media (max-width:860px){.contato-video-card{height:clamp(240px,60vw,320px)}}
+.contato-video-copy{position:absolute;left:16px;right:16px;bottom:16px;z-index:1;display:grid;gap:10px;background:rgba(255,253,248,.94);border:1px solid var(--linha-p);padding:18px 20px;color:var(--tinta);transition:border-color .25s ease,background-color .25s ease}
+.contato-video-copy:hover{border-color:var(--ouro-paper);background:#FFFDF8}
+.contato-video-copy .pergunta{display:block;font-family:var(--display);font-size:clamp(16px,1.7vw,19px);line-height:1.3;max-width:26ch}
+.contato-video-copy .cta{display:inline-flex;align-items:center;gap:10px;margin-top:2px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro-paper-texto);font-weight:500}
+.contato-video-copy .arr{font-family:var(--num);font-style:italic;font-size:17px;letter-spacing:0;text-transform:none;transition:transform .25s cubic-bezier(.2,.7,.1,1)}
+.contato-video-copy:hover .arr{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){.contato-video-copy .arr{transition:none}.contato-video-copy:hover .arr{transform:none}}
 .btn-contato{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:500;padding:17px 28px;min-height:44px;border-radius:2px;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .15s ease,box-shadow .2s ease}
 .btn-contato svg{width:20px;height:20px;flex:0 0 auto}
 .btn-contato.principal{background:var(--ouro-paper);color:#FFFDF8;border:1px solid var(--ouro-paper)}
@@ -473,7 +520,21 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
   </div>
 </div>
 
-<section class="paper" id="custo">
+<section class="paper sec-video" id="custo" data-video-bg>
+  <div class="bgvideo" aria-hidden="true" style="background-image:url('assets/video/custo-fundo-poster.jpg')">
+    <video class="bgvideo-el" muted loop playsinline preload="none" poster="assets/video/custo-fundo-poster.jpg">
+      <source data-src="assets/video/custo-fundo.webm" type="video/webm">
+      <source data-src="assets/video/custo-fundo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="bgvideo-scrim" aria-hidden="true"></div>
+  <div class="bgvideo-controls">
+    <p class="bgvideo-tag">Vídeo ilustrativo</p>
+    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo de fundo ilustrativo">
+      <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
+    </button>
+  </div>
   <div class="shell">
     <div class="sec-head" data-reveal>
       <div>
@@ -502,7 +563,21 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
   </div>
 </section>
 
-<section id="metodo" class="marble">
+<section id="metodo" class="marble sec-video" data-video-bg>
+  <div class="bgvideo" aria-hidden="true" style="background-image:url('assets/video/metodo-fundo-poster.jpg')">
+    <video class="bgvideo-el" muted loop playsinline preload="none" poster="assets/video/metodo-fundo-poster.jpg">
+      <source data-src="assets/video/metodo-fundo.webm" type="video/webm">
+      <source data-src="assets/video/metodo-fundo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="bgvideo-scrim" aria-hidden="true"></div>
+  <div class="bgvideo-controls">
+    <p class="bgvideo-tag">Vídeo ilustrativo</p>
+    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo de fundo ilustrativo">
+      <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
+    </button>
+  </div>
   <div class="shell">
     <div class="sec-head" data-reveal>
       <div>
@@ -651,7 +726,22 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
   </div>
 </section>
 
-<section class="marble" style="border-top:1px solid var(--linha)">
+<section id="depoimentos" class="marble sec-video" style="border-top:1px solid var(--linha)" data-video-bg>
+  <div class="bgvideo" aria-hidden="true" style="background-image:url('assets/video/depoimentos-fundo-poster.jpg')">
+    <video class="bgvideo-el" muted loop playsinline preload="none" poster="assets/video/depoimentos-fundo-poster.jpg">
+      <source data-src="assets/video/depoimentos-fundo.webm" type="video/webm">
+      <source data-src="assets/video/depoimentos-fundo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="bgvideo-scrim" aria-hidden="true"></div>
+  <div class="bgvideo-controls">
+    <p class="bgvideo-tag">Vídeo ilustrativo</p>
+    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo de fundo ilustrativo">
+      <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
+    </button>
+  </div>
+  <!-- O imóvel deste vídeo é ilustrativo (banco de imagens), sem qualquer relação com os clientes citados nos depoimentos abaixo — ver regra de compliance no CLAUDE.md. -->
   <div class="shell">
     <div class="sec-head" data-reveal>
       <div>
@@ -670,16 +760,40 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
 </section>
 
 <section class="cta-contato paper">
-  <div class="shell" data-reveal>
-    <p class="label dim" style="color:var(--tinta-2)">Fale com a Perla</p>
-    <h2 style="margin-top:18px">Seu próximo capítulo começa com um projeto <span class="it" style="color:var(--ouro-paper)">bem cuidado</span><span class="dot" style="color:var(--ouro-paper)">.</span></h2>
-    <p>Converse com a Perla sobre o que você deseja construir ou transformar.</p>
-    <div class="ctas">
-      <a class="btn-contato principal" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        Conversar pelo WhatsApp
-      </a>
-      <!-- Botão "Enviar um e-mail" entra assim que o endereço oficial for confirmado — ver PROGRESS.md. Regra do próprio pedido: nunca publicar botão sem destino. -->
+  <div class="shell">
+    <div class="contato-grid" data-reveal>
+      <div>
+        <p class="label dim" style="color:var(--tinta-2)">Fale com a Perla</p>
+        <h2 style="margin-top:18px">Seu próximo capítulo começa com um projeto <span class="it" style="color:var(--ouro-paper)">bem cuidado</span><span class="dot" style="color:var(--ouro-paper)">.</span></h2>
+        <p>Converse com a Perla sobre o que você deseja construir ou transformar.</p>
+        <div class="ctas">
+          <a class="btn-contato principal" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Conversar pelo WhatsApp
+          </a>
+          <!-- Botão "Enviar um e-mail" entra assim que o endereço oficial for confirmado — ver PROGRESS.md. Regra do próprio pedido: nunca publicar botão sem destino. -->
+        </div>
+      </div>
+      <!-- Cartão de vídeo exclusivo desta coluna — nunca fundo da seção inteira, nunca atrás do texto acima. -->
+      <div class="contato-video-card" data-video-bg>
+        <div class="bgvideo" aria-hidden="true" style="background-image:url('assets/video/contato-cartao-poster.jpg')">
+          <video class="bgvideo-el" muted loop playsinline preload="none" poster="assets/video/contato-cartao-poster.jpg">
+            <source data-src="assets/video/contato-cartao.webm" type="video/webm">
+            <source data-src="assets/video/contato-cartao.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="bgvideo-controls">
+          <p class="bgvideo-tag">Vídeo ilustrativo</p>
+          <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo ilustrativo do cartão de contato">
+            <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
+          </button>
+        </div>
+        <a class="contato-video-copy" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">
+          <span class="pergunta">Vamos planejar sua próxima conquista?</span>
+          <span class="cta">Conversar com a Perla<span class="arr">→</span></span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -881,6 +995,67 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
   window.addEventListener('scroll', pedirAtualizacao, { passive: true });
   window.addEventListener('resize', pedirAtualizacao);
   atualizar();
+})();
+</script>
+
+<script>
+// Vídeos de fundo ilustrativos (#custo, #metodo, #depoimentos e o cartão do contato): cada um só
+// recebe `src` quando a seção fica perto da área visível (não os 4 de uma vez no carregamento da
+// página) e pausa ao sair da área visível (economia de bateria/CPU, sem descarregar o vídeo). Sob
+// prefers-reduced-motion:reduce, sem IntersectionObserver, ou se o navegador falhar ao reproduzir,
+// nenhum vídeo toca — fica só o poster (imagem estática), nunca uma área em branco. O botão de
+// pausar tem prioridade sobre a visibilidade: uma vez pausado manualmente, só volta a tocar se o
+// usuário clicar de novo.
+(function () {
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var blocos = Array.prototype.slice.call(document.querySelectorAll('[data-video-bg]'));
+  if (!blocos.length) return;
+
+  blocos.forEach(function (bloco) {
+    var video = bloco.querySelector('.bgvideo-el');
+    var toggle = bloco.querySelector('[data-video-toggle]');
+    var fontes = video ? Array.prototype.slice.call(video.querySelectorAll('source[data-src]')) : [];
+    if (!video || !fontes.length) return;
+    var userPaused = false, carregado = false, visivel = false;
+
+    function tentarTocar() {
+      if (reducedMotion || userPaused || !visivel) return;
+      if (!carregado) {
+        fontes.forEach(function (s) { s.src = s.getAttribute('data-src'); });
+        video.load();
+        carregado = true;
+      }
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { /* autoplay recusado — poster continua visível */ });
+    }
+
+    function falhou() { bloco.classList.add('bgvideo-failed'); }
+    video.addEventListener('error', falhou);
+    // erro de <source> não borbulha até o <video> — sem isso, "nenhuma fonte carrega" nunca
+    // dispararia o fallback (só falhas depois de já ter escolhido uma fonte disparam no <video>).
+    fontes[fontes.length - 1].addEventListener('error', falhou);
+
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        userPaused = !userPaused;
+        toggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+        toggle.setAttribute('aria-label', userPaused
+          ? toggle.getAttribute('aria-label').replace('Pausar', 'Retomar')
+          : toggle.getAttribute('aria-label').replace('Retomar', 'Pausar'));
+        if (userPaused) video.pause(); else tentarTocar();
+      });
+    }
+
+    if (!reducedMotion && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          visivel = entry.isIntersecting;
+          if (visivel) tentarTocar(); else video.pause();
+        });
+      }, { rootMargin: '200px 0px', threshold: 0.01 });
+      io.observe(bloco);
+    }
+  });
 })();
 </script>
 </body>
