@@ -144,12 +144,13 @@ body.nav-open{overflow:hidden}
 }
 
 /* ============ SEÇÕES ============ */
-section{padding-block:clamp(88px,11vw,160px)}
+/* Ritmo vertical (ajuste 26/09p): 48–64px de padding por seção no desktop, 32–40px no mobile —
+   evita somar o fim de uma seção com o começo da próxima e formar vãos de 200px+. Capa (.hero-*)
+   e o cartão de vídeo do contato ficam fora desta regra, com espaçamento próprio preservado. */
+section{padding-block:clamp(48px,6vw,64px)}
 section[id]{scroll-margin-top:88px}
-/* Ritmo vertical comprimido no mobile: o floor de 88px do clamp acima é alto demais empilhado em telas
-   pequenas — reduzido aqui só para phones, sem mexer no valor fluido usado em tablet/desktop */
-@media (max-width:600px){section{padding-block:clamp(56px,14vw,88px)}}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:end;margin-bottom:clamp(48px,6vw,88px)}
+@media (max-width:600px){section{padding-block:clamp(32px,8vw,40px)}}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,5vw,64px);align-items:end;margin-bottom:clamp(24px,3vw,32px)}
 .sec-head .tag{display:grid;gap:10px;border-top:1px solid var(--linha);padding-top:14px}
 .sec-head .tag i{font-family:var(--num);font-size:12px;color:var(--ouro)}
 .sec-head h2{font-size:clamp(34px,4.6vw,64px);line-height:1.03;margin-top:26px}
@@ -322,7 +323,7 @@ section[id]{scroll-margin-top:88px}
 }
 
 /* ============ SÓCIAS ============ */
-.duo-photo{margin-bottom:clamp(32px,5vw,56px);border:1px solid var(--linha);overflow:hidden}
+.duo-photo{margin-bottom:clamp(24px,3vw,40px);border:1px solid var(--linha);overflow:hidden}
 .duo-photo img{width:100%;height:auto;display:block;aspect-ratio:1080/972;object-fit:cover}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,64px)}
 .person{display:grid;gap:14px;align-content:start;border-top:1px solid var(--linha);padding-top:22px}
@@ -330,7 +331,7 @@ section[id]{scroll-margin-top:88px}
 .person .role{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ouro)}
 .person p{color:var(--perola-2);font-size:var(--fs-support);max-width:44ch}
 .person .reg{font-size:12px;color:var(--perola-3);border-top:1px solid var(--linha);padding-top:12px}
-.values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--linha)}
+.values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:clamp(32px,4vw,48px);border-top:1px solid var(--linha)}
 .values div{padding:26px 22px 0 0;display:grid;gap:8px}
 .values div+div{padding-left:22px;border-left:1px solid var(--linha)}
 .values b{font-weight:500;font-size:18px;position:relative;display:inline-block}
@@ -357,7 +358,7 @@ section[id]{scroll-margin-top:88px}
    página (hero, método, serviços, obras, quem somos) continua no tema escuro atual — migra
    numa entrega separada. Reaproveita os tokens --papel/--tinta/--tinta-2/--linha-p/--ouro-paper
    já oficiais da marca (mesmos da seção #custo), nada inventado. */
-.cta-contato{text-align:left;padding-block:clamp(72px,10vw,128px)}
+.cta-contato{text-align:left;padding-block:clamp(48px,6vw,72px)}
 .cta-contato h2{font-size:clamp(32px,4.6vw,56px);line-height:1.08;max-width:16ch;color:var(--tinta)}
 .cta-contato p{color:var(--tinta-2);max-width:48ch;margin-top:20px;font-size:var(--fs-support)}
 .cta-contato .ctas{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:40px}
