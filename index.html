@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Perla Construtora | Arquitetura, Engenharia e Reformas em Belo Horizonte</title>
+<meta name="description" content="Projeto, viabilidade financeira e execução de obras e reformas em Belo Horizonte, com um só responsável. Arquitetura + Engenharia + Viabilidade, sem o caos da obra.">
+<meta name="theme-color" content="#0E0D0C">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Perla Construtora">
+<meta property="og:title" content="Perla Construtora | Arquitetura, Engenharia e Reformas em Belo Horizonte">
+<meta property="og:description" content="Projeto, viabilidade financeira e execução de obras e reformas em Belo Horizonte, com um só responsável.">
+<!-- TODO: og:image e og:url assim que houver domínio de publicação definido (logo já temos, em assets/img/brand/) -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/brand/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<style>
+/* ============ SISTEMA PERLA · tokens ============ */
+:root{
+  color-scheme: dark;
+  /* Cor: 1 fundo, 1 tinta, 1 acento. Nada além disso. */
+  --onix:#0E0D0C;          /* fundo — mármore do logo */
+  --onix-2:#141210;        /* superfície elevada */
+  --perola:#EFE7D6;        /* tinta principal — highlight do ouro do logo */
+  --perola-2:#B3A994;      /* texto secundário */
+  --perola-3:#89806F;      /* legendas, metadados — ajustado de #7A7263 para atingir 4.5:1 (WCAG AA) sobre --onix */
+  --ouro:#C2A56E;          /* acento — ouro champanhe do logo (chapado) */
+  --ouro-deep:#9C8A5E;     /* ouro em hover / filetes fortes */
+  --linha:rgba(239,231,214,.10);
+  --linha-2:rgba(239,231,214,.18);
+  /* Seção clara (única): papel pérola da fase editorial */
+  --papel:#F4EEE6; --tinta:#231A17; --tinta-2:#5C4F46; --linha-p:rgba(35,26,23,.14);
+  --ouro-paper:#8F7442; /* acento ouro no tom papel — mesma função do --ouro na seção clara, era repetido 3x como hex solto */
+
+  --display:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --num:"Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --gutter:clamp(20px,5vw,72px);
+  --max:1240px;
+  /* Escala tipográfica de apoio: consolida corpo secundário (era 15.5/15px espalhado) e meta/terciário (era 14.5/14px) */
+  --fs-support:15.5px;
+  --fs-meta:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--onix);color:var(--perola);font-family:var(--display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;letter-spacing:-.015em}
+.shell{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+.label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--perola);font-weight:500}
+.label.dim{color:var(--perola-3)}
+.it{font-family:var(--num);font-style:italic;font-weight:400;color:var(--ouro);letter-spacing:0}
+.dot{color:var(--ouro)}
+:focus-visible{outline:1px solid var(--ouro);outline-offset:4px}
+
+/* grão de mármore: textura sutil, não enfeite */
+.marble{position:relative;isolation:isolate}
+.marble::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(900px 520px at 72% 18%, rgba(194,165,110,.07), transparent 62%),
+   radial-gradient(700px 400px at 10% 90%, rgba(107,74,44,.10), transparent 60%),
+   linear-gradient(118deg, transparent 47%, rgba(239,231,214,.035) 47.4%, transparent 48.2%),
+   linear-gradient(64deg, transparent 71%, rgba(239,231,214,.025) 71.3%, transparent 71.9%),
+   linear-gradient(152deg, transparent 20%, rgba(239,231,214,.02) 20.3%, transparent 21%);}
+
+/* ============ NAV ============ */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(14,13,12,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+.nav .shell{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.wordmark{display:flex;align-items:center;gap:12px}
+.wordmark img{width:40px;height:40px;border-radius:50%;flex:0 0 auto;object-fit:cover}
+.wordmark .txt{display:grid;line-height:1;gap:3px}
+.wordmark b{font-weight:500;font-size:22px;letter-spacing:.14em;background:linear-gradient(180deg,#F3ECD4,var(--ouro) 75%,var(--ouro-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wordmark .sub{font-size:10px;letter-spacing:.42em;color:var(--perola-3);text-transform:lowercase}
+.nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--perola-2)}
+.nav ul a{transition:color .3s ease}
+.nav ul a:hover{color:var(--perola)}
+.btn{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:15px 22px;border:1px solid var(--ouro);color:var(--perola);transition:background .35s ease,color .35s ease}
+.btn:hover{background:var(--ouro);color:var(--onix)}
+.btn.solid{background:var(--ouro);color:var(--onix)}
+.btn.solid:hover{background:var(--perola)}
+.btn .arr{font-family:var(--num);font-style:italic;font-size:18px;letter-spacing:0;text-transform:none}
+.link{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--perola-2);border-bottom:1px solid var(--linha-2);padding-bottom:4px;transition:color .3s ease,border-color .3s ease}
+.link:hover{color:var(--perola);border-color:var(--ouro)}
+/* Menu mobile: hamburger substitui o menu desktop e o CTA do topo abaixo de 900px — nada de nav "sumindo" sem alternativa */
+.nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;padding:0;margin:0;background:none;border:0;cursor:pointer;flex:0 0 auto}
+.nav-burger span{display:block;width:20px;height:1.5px;background:var(--perola);transition:transform .3s cubic-bezier(.2,.7,.1,1),opacity .25s ease}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;left:0;right:0;top:73px;bottom:0;z-index:9;background:rgba(14,13,12,.98);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:8px var(--gutter) 32px;overflow-y:auto}
+.nav-mobile.open{display:block}
+.nav-mobile ul{display:block;list-style:none;margin:0;padding:0}
+.nav-mobile li{border-bottom:1px solid var(--linha)}
+.nav-mobile ul a{display:block;padding:20px 2px;font-family:var(--display);font-size:clamp(22px,6vw,28px);color:var(--perola)}
+.nav-mobile .btn{margin-top:28px;justify-content:center;width:100%}
+body.nav-open{overflow:hidden}
+@media (max-width:900px){.nav>.shell>ul,.nav>.shell>.btn{display:none}.nav-burger{display:flex}}
+@media (max-width:480px){.nav .btn{padding:11px 14px;font-size:10px;letter-spacing:.18em}}
+
+/* ============ HERO ============ */
+.hero{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(72px,11vw,150px) clamp(64px,8vw,110px)}
+/* Imagem de fundo: cobre o hero. .hero-bg-wrap tem folga vertical (124%) para o parallax de scroll não revelar
+   borda; recebe pan (yPercent) + zoom (scale) via GSAP. .hero-bg (a própria imagem) recebe só o tilt sutil do
+   mouse — camada separada para não conflitar com o transform do wrap. */
+.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--onix)}
+.hero-bg-wrap{position:absolute;left:0;right:0;top:-12%;bottom:-12%;transform-origin:center center;will-change:transform}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform-origin:center center;will-change:transform;backface-visibility:hidden}
+/* Overlay suavizado (26/09b) — a versão anterior ficou escura demais reforçando legibilidade; o texto já tem
+   text-shadow própria (ver .hero h1/.label/.lede), então o gradiente pôde aliviar sem perder contraste real */
+.hero-video-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(100deg, rgba(14,13,12,.48) 0%, rgba(14,13,12,.28) 38%, rgba(14,13,12,.05) 60%, transparent 74%),
+  linear-gradient(180deg, rgba(14,13,12,.74) 0%, rgba(14,13,12,.44) 30%, rgba(14,13,12,.38) 55%, rgba(14,13,12,.6) 82%, rgba(14,13,12,.82) 100%),
+  radial-gradient(1000px 560px at 80% 12%, rgba(194,165,110,.12), transparent 62%)}
+.hero .shell{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(40px,6vw,96px);align-items:end}
+.hero h1{font-size:clamp(44px,7.2vw,104px);line-height:.98;font-weight:600;margin-top:28px;text-shadow:0 4px 28px rgba(0,0,0,.45)}
+.hero h1 .it{font-size:1.08em;line-height:.9}
+.hero .label{text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.hero .lede{font-size:clamp(18px,1.6vw,21px);color:var(--perola-2);max-width:40ch;margin-top:34px;line-height:1.55;text-shadow:0 2px 16px rgba(0,0,0,.35)}
+.hero .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:44px}
+.hero-aside{display:grid;gap:26px;border-left:1px solid var(--linha);padding-left:clamp(20px,3vw,40px)}
+.hero-aside .fig{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:clamp(84px,10vw,140px);line-height:.8}
+.hero-aside p{color:var(--perola-2);font-size:var(--fs-support);max-width:30ch}
+.hero-aside small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--perola-3)}
+.trio{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:clamp(56px,7vw,96px);padding-top:22px;border-top:1px solid var(--linha);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--perola-2)}
+.trio span:not(:last-child)::after{content:"·";margin-left:28px;color:var(--ouro)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-aside{border-left:0;padding-left:0;border-top:1px solid var(--linha);padding-top:28px}}
+
+/* ============ SEÇÕES ============ */
+section{padding-block:clamp(88px,11vw,160px)}
+section[id]{scroll-margin-top:88px}
+/* Ritmo vertical comprimido no mobile: o floor de 88px do clamp acima é alto demais empilhado em telas
+   pequenas — reduzido aqui só para phones, sem mexer no valor fluido usado em tablet/desktop */
+@media (max-width:600px){section{padding-block:clamp(56px,14vw,88px)}}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:end;margin-bottom:clamp(48px,6vw,88px)}
+.sec-head .tag{display:grid;gap:10px;border-top:1px solid var(--linha);padding-top:14px}
+.sec-head .tag i{font-family:var(--num);font-size:12px;color:var(--ouro)}
+.sec-head h2{font-size:clamp(34px,4.6vw,64px);line-height:1.03;margin-top:26px}
+.sec-head p{color:var(--perola-2);max-width:46ch}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}}
+
+/* Foto real dentro de .photo: preenche o quadro, legenda sobreposta com gradiente de leitura */
+.photo{position:relative;background:linear-gradient(160deg,#1c1916,#0f0e0d 70%);border:1px solid var(--linha);overflow:hidden;display:flex;align-items:flex-end;padding:18px}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55) 100%);pointer-events:none}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.photo span{position:relative;z-index:1;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--perola)}
+
+/* Fita de obras: rolagem contínua em CSS puro (sem lib), pausa no hover, some sob prefers-reduced-motion */
+.marquee-strip{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);overflow:hidden;padding-block:clamp(22px,3vw,34px)}
+.marquee-track{display:flex;gap:16px;width:max-content}
+.marquee-track .photo{flex:0 0 auto;width:clamp(150px,16vw,210px);aspect-ratio:3/4;padding:12px}
+.marquee-track .photo:nth-child(odd){transform:rotate(-2deg)}
+.marquee-track .photo:nth-child(even){transform:rotate(2.4deg)}
+@media (prefers-reduced-motion:no-preference){
+  .marquee-track{animation:marquee-scroll 46s linear infinite}
+  .marquee-strip:hover .marquee-track,.marquee-strip:focus-within .marquee-track{animation-play-state:paused}
+  @keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+}
+@media (prefers-reduced-motion:reduce){.marquee-strip{overflow-x:auto}}
+
+/* ============ O CUSTO (seção clara) ============ */
+.paper{background:var(--papel);color:var(--tinta)}
+.paper .sec-head .tag{border-color:var(--linha-p)}
+.paper .label{color:var(--tinta)}
+.paper .label.dim,.paper .sec-head p{color:var(--tinta-2)}
+.paper .it{color:var(--ouro-paper)}
+.paper h2{color:var(--tinta)}
+.paper .dot{color:var(--ouro-paper)}
+.split{display:grid;gap:18px}
+.bar{display:grid;grid-template-columns:37fr 63fr;height:clamp(96px,12vw,150px);border:1px solid var(--linha-p)}
+.bar div{display:flex;flex-direction:column;justify-content:space-between;padding:16px 18px}
+.bar .a{background:#2A221E;color:var(--perola)}
+.bar .b{background:transparent}
+.bar b{font-family:var(--num);font-style:italic;font-weight:400;font-size:clamp(40px,5vw,64px);line-height:.9}
+.bar .a b{color:#D8BD86}
+.bar .b b{color:var(--ouro-paper)}
+.bar small{font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+.bar-legend{display:grid;grid-template-columns:37fr 63fr;gap:0;font-size:15px;color:var(--tinta-2)}
+.bar-legend p{padding-right:18px;max-width:40ch}
+.bar-legend p+p{padding-left:18px}
+.src{font-size:12px;color:var(--tinta-2);margin-top:10px}
+@media (max-width:640px){.bar-legend{grid-template-columns:1fr;gap:12px}.bar-legend p+p{padding-left:0}}
+.bar div{transition:background-color .5s ease}
+.bar:hover .a{background-color:#332921}
+
+/* ============ MÉTODO ============ */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--linha)}
+.step{padding:34px clamp(16px,2vw,30px) 0 0;display:grid;gap:18px;align-content:start}
+.step+.step{padding-left:clamp(16px,2vw,30px);border-left:1px solid var(--linha)}
+.step .n{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:clamp(48px,5vw,68px);line-height:.8;display:inline-block;transition:color .4s ease,transform .4s cubic-bezier(.2,.7,.1,1)}
+.step:hover .n{color:var(--perola);transform:translateX(3px)}
+.step h3{font-size:clamp(22px,2.2vw,26px);line-height:1.15;position:relative;display:inline-block}
+.step h3::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ouro);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.1,1)}
+.step:hover h3::after{transform:scaleX(1)}
+.step p{color:var(--perola-2);font-size:var(--fs-support)}
+.step ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:13px;color:var(--perola-3)}
+.step li::before{content:"— ";color:var(--ouro-deep)}
+@media (max-width:980px){.steps{grid-template-columns:1fr 1fr;row-gap:44px}.step:nth-child(3){border-left:0;padding-left:0}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}.step,.step+.step{border-left:0;padding-left:0;padding-top:28px;border-top:1px solid var(--linha)}.steps{border-top:0}}
+
+/* ============ SERVIÇOS ============ */
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.door{display:grid;grid-template-rows:auto auto 1fr;gap:22px;border:1px solid var(--linha);padding:0 0 clamp(24px,2.6vw,36px);background:var(--onix-2);transition:border-color .4s ease}
+.door:hover{border-color:var(--ouro-deep)}
+.door .photo{aspect-ratio:4/3;width:100%;max-width:100%;border:0;border-bottom:1px solid var(--linha);overflow:hidden}
+.door .photo img{transition:transform .6s cubic-bezier(.2,.7,.1,1)}
+.door:hover .photo img{transform:scale(1.045)}
+.door>div:not(.photo),.door>p{padding-inline:clamp(24px,2.6vw,36px)}
+.door h3{font-size:clamp(24px,2.3vw,30px);line-height:1.1}
+.door .arr{display:inline-block;font-family:var(--num);font-style:italic;color:var(--ouro);margin-left:8px;opacity:0;transform:translateX(-6px);transition:opacity .4s ease,transform .4s cubic-bezier(.2,.7,.1,1)}
+.door:hover .arr{opacity:1;transform:translateX(0)}
+.door p{color:var(--perola-2);font-size:var(--fs-support)}
+.door .for{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--perola-3)}
+.niche{margin-top:clamp(16px,2vw,28px);display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,3vw,48px);align-items:center;border:1px solid var(--linha);padding:clamp(24px,2.6vw,36px);transition:border-color .4s ease}
+.niche:hover{border-color:var(--ouro-deep)}
+.niche .it{font-size:clamp(44px,4.4vw,60px);line-height:.8}
+.niche h3{font-size:clamp(22px,2.2vw,26px)}
+.niche p{color:var(--perola-2);font-size:var(--fs-support);max-width:60ch;margin-top:6px}
+@media (max-width:900px){.doors{grid-template-columns:1fr}.niche{grid-template-columns:1fr}}
+
+/* ============ OBRAS ============ */
+.works{list-style:none;margin:0;padding:0;border-top:1px solid var(--linha)}
+.works li{display:grid;grid-template-columns:56px 56px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) 40px;gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid var(--linha);transition:padding .35s ease}
+.works li:hover{padding-left:10px}
+.works .thumb{width:56px;height:56px;overflow:hidden;flex:0 0 auto;border:1px solid var(--linha)}
+.works .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
+.works li:hover .thumb img{transform:scale(1.08)}
+.works .n{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:26px;transition:color .35s ease}
+.works li:hover .n{color:var(--perola)}
+.works h3{font-size:clamp(20px,2vw,26px);line-height:1.2}
+.works .t{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--perola-3)}
+.works .d{font-size:var(--fs-meta);color:var(--perola-2)}
+.works .go{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:22px;text-align:right;display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.1,1)}
+.works li:hover .go{transform:translateX(5px)}
+@media (max-width:820px){
+  .works li{grid-template-columns:56px 40px 1fr;row-gap:6px}
+  .works .thumb{grid-row:1/4}
+  .works .n{grid-column:2;grid-row:1}
+  .works h3{grid-column:3;grid-row:1}
+  .works .t{grid-column:3;grid-row:2}
+  .works .d{grid-column:3;grid-row:3}
+  .works .go{display:none}
+}
+
+/* ============ SÓCIAS ============ */
+.duo-photo{margin-bottom:clamp(32px,5vw,56px);border:1px solid var(--linha);overflow:hidden}
+.duo-photo img{width:100%;height:auto;display:block;aspect-ratio:1080/972;object-fit:cover}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,64px)}
+.person{display:grid;gap:14px;align-content:start;border-top:1px solid var(--linha);padding-top:22px}
+.person h3{font-size:clamp(28px,3vw,40px);line-height:1}
+.person .role{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ouro)}
+.person p{color:var(--perola-2);font-size:var(--fs-support);max-width:44ch}
+.person .reg{font-size:12px;color:var(--perola-3);border-top:1px solid var(--linha);padding-top:12px}
+.values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--linha)}
+.values div{padding:26px 22px 0 0;display:grid;gap:8px}
+.values div+div{padding-left:22px;border-left:1px solid var(--linha)}
+.values b{font-weight:500;font-size:18px;position:relative;display:inline-block}
+.values b::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--ouro);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.1,1)}
+.values div:hover b::after{transform:scaleX(1)}
+.values span{font-size:var(--fs-meta);color:var(--perola-2)}
+@media (max-width:820px){.duo{grid-template-columns:1fr}.values{grid-template-columns:1fr 1fr;row-gap:28px}.values div:nth-child(3){border-left:0;padding-left:0}}
+@media (max-width:480px){.values{grid-template-columns:1fr;row-gap:24px}.values div{border-left:0!important;padding-left:0!important}}
+
+/* ============ DEPOIMENTOS ============ */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px)}
+.quotes figure{margin:0;display:grid;gap:22px;align-content:start;border-top:1px solid var(--linha);padding-top:26px;transition:border-color .4s ease}
+.quotes figure:hover{border-color:var(--ouro-deep)}
+.quotes .mark{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:64px;line-height:.4;height:22px;display:inline-block;transition:transform .4s cubic-bezier(.2,.7,.1,1)}
+.quotes figure:hover .mark{transform:translateY(-3px)}
+.quotes blockquote{margin:0;font-size:clamp(20px,1.9vw,24px);line-height:1.35;font-weight:400}
+.quotes figcaption{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--perola-3)}
+@media (max-width:900px){.quotes{grid-template-columns:1fr}}
+
+/* ============ CTA + FOOTER ============ */
+.final{text-align:left;border-top:1px solid var(--linha);padding-top:clamp(110px,13vw,180px)}
+.final h2{font-size:clamp(40px,6.4vw,92px);line-height:1;max-width:14ch}
+.final p{color:var(--perola-2);max-width:48ch;margin-top:28px}
+.final .ctas{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-top:44px}
+footer{border-top:1px solid var(--linha);padding-block:48px 56px;font-size:13px;color:var(--perola-3)}
+footer .shell{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px}
+footer b{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--perola-2);font-weight:500;margin-bottom:12px}
+footer a{transition:color .3s ease}
+footer a:hover{color:var(--perola)}
+footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px}
+@media (max-width:820px){footer .shell{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.final{padding-top:clamp(72px,16vw,110px)}footer .shell{grid-template-columns:1fr;gap:28px}}
+
+/* Movimento que sussurra: só entrada do hero, visível em repouso */
+@media (prefers-reduced-motion:no-preference){
+  .rise{animation:rise 1.1s cubic-bezier(.2,.7,.1,1) both}
+  .rise.d2{animation-delay:.12s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.36s}
+  @keyframes rise{from{opacity:.001;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+
+/* Revelação ao rolar: seções abaixo do hero entram em repouso, sem sobrecarregar — só opacity+translate, sem lib */
+@media (prefers-reduced-motion:no-preference){
+  [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.1,1),transform .8s cubic-bezier(.2,.7,.1,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  [data-reveal-group]>*{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.1,1),transform .7s cubic-bezier(.2,.7,.1,1)}
+  [data-reveal-group="x"]>*{transform:translateX(-14px)}
+  [data-reveal-group].in>*{opacity:1;transform:none}
+  [data-reveal-group].in>*:nth-child(1){transition-delay:0s}
+  [data-reveal-group].in>*:nth-child(2){transition-delay:.08s}
+  [data-reveal-group].in>*:nth-child(3){transition-delay:.16s}
+  [data-reveal-group].in>*:nth-child(4){transition-delay:.24s}
+  [data-reveal-group].in>*:nth-child(5){transition-delay:.32s}
+  [data-reveal-group].in>*:nth-child(6){transition-delay:.4s}
+}
+/* Sem JS: nunca ficar invisível */
+</style>
+<noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1!important;transform:none!important}.hero-bg-wrap,.hero-bg{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+
+<nav class="nav" aria-label="Principal">
+  <div class="shell">
+    <a href="#top" class="wordmark" aria-label="Perla Construtora">
+      <picture><source srcset="assets/img/brand/logo-perla-icon.webp" type="image/webp"><img src="assets/img/brand/logo-perla-icon.jpg" alt="" width="40" height="40" loading="eager"></picture>
+      <span class="txt"><b>PERLA</b><span class="sub">construtora</span></span>
+    </a>
+    <ul>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#obras">Obras</a></li>
+      <li><a href="#quem-somos">Quem somos</a></li>
+    </ul>
+    <a class="btn" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Agendar conversa</a>
+    <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <ul>
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#obras">Obras</a></li>
+    <li><a href="#quem-somos">Quem somos</a></li>
+  </ul>
+  <a class="btn solid" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Agendar conversa <span class="arr">→</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-media" aria-hidden="true">
+    <div class="hero-bg-wrap">
+      <img class="hero-bg" src="assets/img/hero/hero-penhasco.webp" alt="" width="1298" height="1600" loading="eager" fetchpriority="high">
+    </div>
+    <div class="hero-video-overlay"></div>
+  </div>
+  <div class="shell">
+    <div class="hero-grid">
+      <div>
+        <p class="label dim rise">Arquitetura &amp; Engenharia · Belo Horizonte</p>
+        <h1 class="rise d2">A casa definitiva da sua família, <span class="it">sem o caos</span> da obra<span class="dot">.</span></h1>
+        <p class="lede rise d3">Projeto, viabilidade financeira e execução com um só responsável. Você sabe quanto vai investir antes do primeiro tijolo e acompanha cada dia da obra pelo aplicativo.</p>
+        <div class="ctas rise d4">
+          <a class="btn solid" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Quero fazer minha obra <span class="arr">→</span></a>
+          <a class="link" href="#metodo">Conhecer o método</a>
+        </div>
+      </div>
+      <aside class="hero-aside rise d3">
+        <small>Antes do acabamento</small>
+        <div class="fig">37%</div>
+        <p>do orçamento de uma reforma já tem destino antes de você escolher o primeiro porcelanato. O EVF mostra esse número no início, não no meio da obra.</p>
+      </aside>
+    </div>
+    <div class="trio"><span>Arquitetura</span><span>Engenharia</span><span>Viabilidade</span></div>
+  </div>
+</header>
+
+<div class="marquee-strip marble" aria-hidden="true">
+  <div class="marquee-track">
+    <picture class="photo"><source srcset="assets/img/marquee/casa-alto-padrao.webp" type="image/webp"><img src="assets/img/marquee/casa-alto-padrao.jpg" alt="" loading="lazy" width="900" height="601"><span>Casa alto padrão</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/house-flipping-antes-depois.webp" type="image/webp"><img src="assets/img/marquee/house-flipping-antes-depois.jpg" alt="" loading="lazy" width="900" height="518"><span>House flipping</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-recepcao.webp" type="image/webp"><img src="assets/img/marquee/clinica-recepcao.jpg" alt="" loading="lazy" width="900" height="1122"><span>Clínica · BH</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-oncologia-infantil.webp" type="image/webp"><img src="assets/img/marquee/clinica-oncologia-infantil.jpg" alt="" loading="lazy" width="900" height="630"><span>Oncologia infantil</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/queijo-artesanal.webp" type="image/webp"><img src="assets/img/marquee/queijo-artesanal.jpg" alt="" loading="lazy" width="865" height="983"><span>Queijo Artesanal</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/projeto-3d-living.webp" type="image/webp"><img src="assets/img/marquee/projeto-3d-living.jpg" alt="" loading="lazy" width="900" height="506"><span>Projeto 3D</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/casa-alto-padrao.webp" type="image/webp"><img src="assets/img/marquee/casa-alto-padrao.jpg" alt="" loading="lazy" width="900" height="601"><span>Casa alto padrão</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/house-flipping-antes-depois.webp" type="image/webp"><img src="assets/img/marquee/house-flipping-antes-depois.jpg" alt="" loading="lazy" width="900" height="518"><span>House flipping</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-recepcao.webp" type="image/webp"><img src="assets/img/marquee/clinica-recepcao.jpg" alt="" loading="lazy" width="900" height="1122"><span>Clínica · BH</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-oncologia-infantil.webp" type="image/webp"><img src="assets/img/marquee/clinica-oncologia-infantil.jpg" alt="" loading="lazy" width="900" height="630"><span>Oncologia infantil</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/queijo-artesanal.webp" type="image/webp"><img src="assets/img/marquee/queijo-artesanal.jpg" alt="" loading="lazy" width="865" height="983"><span>Queijo Artesanal</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/projeto-3d-living.webp" type="image/webp"><img src="assets/img/marquee/projeto-3d-living.jpg" alt="" loading="lazy" width="900" height="506"><span>Projeto 3D</span></picture>
+  </div>
+</div>
+
+<section class="paper" id="custo">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div>
+        <div class="tag"><i>01</i><span class="label">O custo que ninguém mostra</span></div>
+        <h2>Mais de um terço da sua reforma vai pro que você <span class="it">nunca escolhe</span><span class="dot">.</span></h2>
+      </div>
+      <div>
+        <p>Toda reforma tem duas partes. Uma você escolhe: revestimento, metais, tinta, iluminação. A outra não: regularização, demolição, elétrica, hidráulica, a parte cinza. Em dois orçamentos reais e independentes fechados pela Perla, essa segunda parte chegou a 37% do total.</p>
+      </div>
+    </div>
+    <div class="split">
+      <div class="bar" role="img" aria-label="Barra proporcional: 37% parte cinza, 63% acabamento" data-reveal-group="x">
+        <div class="a"><small>Parte cinza</small><b>37%</b></div>
+        <div class="b"><small>Acabamento que você escolhe</small><b>63%</b></div>
+      </div>
+      <div class="bar-legend">
+        <p>Demolição, elétrica, hidráulica, regularização e serviços preliminares.</p>
+        <p>Porcelanato, metais, marcenaria, iluminação. Aqui entra o seu gosto, com o valor real que sobra.</p>
+      </div>
+      <p class="src">Fonte: Perla Construtora, dois orçamentos reais de reforma residencial, 2026.</p>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" class="marble">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div>
+        <div class="tag"><i>02</i><span class="label">Método Perla</span></div>
+        <h2>Do primeiro traço à <span class="it">chave na mão</span><span class="dot">.</span></h2>
+      </div>
+      <p>Arquitetura e engenharia trabalham juntas desde o início. É isso que evita a obra que cobra o que o projeto não resolveu.</p>
+    </div>
+    <div class="steps" data-reveal-group>
+      <div class="step"><span class="n">01</span><h3>Projeto</h3><p>Briefing da rotina da família, levantamento arquitetônico, projeto executivo e interiores.</p><ul><li>Imagens 3D</li><li>Aprovação na Prefeitura</li></ul></div>
+      <div class="step"><span class="n">02</span><h3>Viabilidade</h3><p>O EVF transforma o projeto em números: custo por etapa, curva ABC e cenários para decidir com clareza.</p><ul><li>Orçamento real</li><li>Simulação de cenários</li></ul></div>
+      <div class="step"><span class="n">03</span><h3>Gestão e execução</h3><p>Cronograma físico-financeiro revisado toda semana e equipe própria sob a engenheira responsável.</p><ul><li>Relatório semanal</li><li>Fotos diárias no app</li></ul></div>
+      <div class="step"><span class="n">04</span><h3>Entrega</h3><p>Checklist final item por item, obra limpa e com garantia. Você recebe a casa pronta para morar.</p><ul><li>Vistoria de entrega</li><li>Garantia de obra</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" style="border-top:1px solid var(--linha)">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div>
+        <div class="tag"><i>03</i><span class="label">Serviços</span></div>
+        <h2>Três formas de começar<span class="dot">.</span></h2>
+      </div>
+      <p>Escolha pelo momento em que você está. Todas terminam no mesmo padrão de entrega.</p>
+    </div>
+    <div class="doors" data-reveal-group>
+      <a class="door" href="https://wa.me/5531999203886" target="_blank" rel="noopener">
+        <picture class="photo">
+          <source srcset="assets/img/servicos/obra-em-andamento.webp" type="image/webp">
+          <img src="assets/img/servicos/obra-em-andamento.jpg" alt="Obra em andamento, corredor em acabamento" loading="lazy" width="1069" height="714">
+        </picture>
+        <div><p class="for">Para quem vai construir ou reformar</p><h3 style="margin-top:12px">Quero fazer minha obra com vocês<span class="arr">→</span></h3></div>
+        <p>Projeto, EVF, gestão e execução completas. Um contrato, uma responsável técnica, zero intermediários.</p>
+      </a>
+      <a class="door" href="https://wa.me/5531999203886" target="_blank" rel="noopener">
+        <picture class="photo">
+          <source srcset="assets/img/servicos/house-flipping-antes-depois.webp" type="image/webp">
+          <img src="assets/img/servicos/house-flipping-antes-depois.jpg" alt="Sala de apartamento reformado, antes e depois" loading="lazy" width="1080" height="621">
+        </picture>
+        <div><p class="for">Perla Transforma</p><h3 style="margin-top:12px">Transformar meu ambiente sem obra<span class="arr">→</span></h3></div>
+        <p>Consultoria de layout, acabamentos e decoração para valorizar o imóvel com agilidade e sem quebra-quebra.</p>
+      </a>
+      <a class="door" href="https://wa.me/5531999203886" target="_blank" rel="noopener">
+        <picture class="photo">
+          <source srcset="assets/img/servicos/projeto-3d-arco-piscina.webp" type="image/webp">
+          <img src="assets/img/servicos/projeto-3d-arco-piscina.jpg" alt="Projeto 3D de terraço com arco e piscina" loading="lazy" width="960" height="1280">
+        </picture>
+        <div><p class="for">Arquitetura &amp; Interiores</p><h3 style="margin-top:12px">Preciso de um projeto<span class="arr">→</span></h3></div>
+        <p>Projeto arquitetônico e de interiores com imagens 3D, aprovação na Prefeitura e regularização.</p>
+      </a>
+    </div>
+    <div class="niche" data-reveal>
+      <span class="it">5+</span>
+      <div><h3>Clínicas e consultórios</h3><p>Formato próprio para médicos e dentistas: projeto, aprovação na Vigilância Sanitária, obra e marcenaria, com prazo pensado para a clínica voltar a faturar.</p></div>
+      <a class="link" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Falar sobre minha clínica</a>
+    </div>
+  </div>
+</section>
+
+<section id="obras" class="marble" style="border-top:1px solid var(--linha)">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div>
+        <div class="tag"><i>04</i><span class="label">Obras</span></div>
+        <h2>Projeto bonito todo mundo mostra. Aqui está o que <span class="it">saiu do papel</span><span class="dot">.</span></h2>
+      </div>
+      <p>Residências, clínicas e reformas para investimento em Belo Horizonte e região.</p>
+    </div>
+    <ul class="works" data-reveal-group>
+      <li><span class="thumb"><picture><source srcset="assets/img/obras/lagoa-ingleses.webp" type="image/webp"><img src="assets/img/obras/lagoa-ingleses.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">01</span><h3>Casa na Lagoa dos Ingleses</h3><span class="t">Residencial · Construção</span><span class="d">Varanda com vista, espaço gourmet</span><span class="go">→</span></li>
+      <li><span class="thumb"><picture><source srcset="assets/img/obras/vale-cristais.webp" type="image/webp"><img src="assets/img/obras/vale-cristais.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">02</span><h3>Casa no Vale dos Cristais</h3><span class="t">Residencial · Obra interna</span><span class="d">Execução completa dos interiores</span><span class="go">→</span></li>
+      <li><span class="thumb"><picture><source srcset="assets/img/obras/clinica-mateus-garcia.webp" type="image/webp"><img src="assets/img/obras/clinica-mateus-garcia.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">03</span><h3>Clínica Dr. Mateus Garcia</h3><span class="t">Saúde · Projeto + obra</span><span class="d">Alvará e sanitário deferidos</span><span class="go">→</span></li>
+      <li><span class="thumb"><picture><source srcset="assets/img/obras/queijo-artesanal.webp" type="image/webp"><img src="assets/img/obras/queijo-artesanal.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">04</span><h3>Centro de Referência do Queijo Artesanal</h3><span class="t">Institucional</span><span class="d">Obra completa</span><span class="go">→</span></li>
+      <li><span class="thumb"><picture><source srcset="assets/img/obras/apartamento-110m2.webp" type="image/webp"><img src="assets/img/obras/apartamento-110m2.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">05</span><h3>Apartamento de 110 m² em 4 meses</h3><span class="t">Residencial · Reforma</span><span class="d">Compra em abril, mudança em 30 de julho</span><span class="go">→</span></li>
+      <li><span class="thumb"><picture><source srcset="assets/img/obras/rua-andaluzita.webp" type="image/webp"><img src="assets/img/obras/rua-andaluzita.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">06</span><h3>Rua Andaluzita, Savassi</h3><span class="t">Reforma para valorizar</span><span class="d">Consultoria + execução</span><span class="go">→</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="quem-somos" style="border-top:1px solid var(--linha)">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div>
+        <div class="tag"><i>05</i><span class="label">Quem somos</span></div>
+        <h2>Uma engenheira e uma arquiteta, <span class="it">na mesma mesa</span><span class="dot">.</span></h2>
+      </div>
+      <p>Mães, empresárias e cristãs. Fundaram a Perla para que o cliente não tivesse que escolher entre projeto bonito e obra bem conduzida.</p>
+    </div>
+    <figure class="duo-photo" data-reveal>
+      <picture>
+        <source srcset="assets/img/equipe/socias-retrato.webp" type="image/webp">
+        <img src="assets/img/equipe/socias-retrato.jpg" alt="Stephanie Faina e Mariana Guimarães, sócias da Perla Construtora" loading="lazy" width="1080" height="972">
+      </picture>
+    </figure>
+    <!-- Foto única das duas sócias juntas: não temos retrato solo de cada uma, e não dá pra confirmar por foto sozinha quem é Stephanie e quem é Mariana — por segurança, nenhum crop foi atribuído a um nome individual. -->
+    <div class="duo" data-reveal-group>
+      <article class="person">
+        <p class="role">Engenharia &amp; gestão de obras</p>
+        <h3>Stephanie Faina</h3>
+        <p>Engenheira civil especialista em gestão de obras. Cuida de cronograma, equipe e custo para que o projeto seja executado exatamente como foi desenhado.</p>
+        <p class="reg">CREA-MG nº 1413598390</p>
+      </article>
+      <article class="person">
+        <p class="role">Arquitetura &amp; interiores</p>
+        <h3>Mariana Guimarães</h3>
+        <p>Arquiteta e advogada. Une estética, funcionalidade e segurança jurídica, das aprovações na Prefeitura e na Vigilância ao último detalhe de marcenaria.</p>
+        <p class="reg">CAU nº [confirmar]</p>
+      </article>
+    </div>
+    <div class="values" data-reveal-group>
+      <div><b>Sem RT</b><span>Não recebemos comissão de fornecedor. Você escolhe pelo que faz sentido.</span></div>
+      <div><b>Preço de custo</b><span>Material e mão de obra repassados sem margem escondida.</span></div>
+      <div><b>Obra no seu celular</b><span>Fotos diárias, compras e medições no app.</span></div>
+      <div><b>Relatório semanal</b><span>Previsto x realizado, toda semana.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="marble" style="border-top:1px solid var(--linha)">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div>
+        <div class="tag"><i>06</i><span class="label">Clientes</span></div>
+        <h2>Delegue a obra<span class="dot">.</span> Receba o <span class="it">resultado</span><span class="dot">.</span></h2>
+      </div>
+    </div>
+    <div class="quotes" data-reveal-group>
+      <!-- Nome e foto reais (Dr. Mateus Garcia) aguardando termo de autorização assinado — ver PROGRESS.md. Até lá, atribuição fica só por profissão/cidade. -->
+      <figure><span class="mark">“</span><blockquote>Alvará de localização e sanitário deferido! Tudo certo. A fiscal elogiou muito o projeto. Agradeço vocês mais uma vez por tudo!</blockquote><figcaption>Odontologia · Belo Horizonte <em style="font-style:normal;color:var(--perola-3)">— nome e foto aguardando autorização</em></figcaption></figure>
+      <!-- Nome real (cliente de Lourdes/BH, consultório de psicanálise) ainda não identificado com a Mariana — aguardando quem é + autorização. -->
+      <figure><span class="mark">“</span><blockquote>Além de um projeto impecável e das ótimas sugestões, ela também se preocupava com o custo e o benefício de cada indicação. Meu consultório está confortável e maravilhoso!</blockquote><figcaption>Psicanálise · Lourdes, BH <em style="font-style:normal;color:var(--perola-3)">— nome aguardando autorização</em></figcaption></figure>
+      <figure><span class="mark">“</span><blockquote>Nesse ritmo aceleradíssimo que é minha vida, gerir uma obra seria praticamente impossível.</blockquote><figcaption>Cliente · Reforma residencial</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="shell" data-reveal>
+    <p class="label dim">Primeiro passo</p>
+    <h2 style="margin-top:26px">Seu sonho<span class="dot">.</span> Nossa <span class="it">entrega</span><span class="dot">.</span></h2>
+    <p>Conte o que você quer construir ou reformar. Na primeira conversa você já sai com uma noção de escopo, prazo e investimento.</p>
+    <div class="ctas">
+      <a class="btn solid" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Agendar conversa <span class="arr">→</span></a>
+      <span style="font-size:14px;color:var(--perola-3)">WhatsApp (31) 9 9920-3886 · Savassi, BH</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="shell">
+    <div><a href="#top" class="wordmark"><picture><source srcset="assets/img/brand/logo-perla-icon.webp" type="image/webp"><img src="assets/img/brand/logo-perla-icon.jpg" alt="" width="40" height="40" loading="lazy"></picture><span class="txt"><b>PERLA</b><span class="sub">construtora</span></span></a><p style="margin-top:18px;max-width:30ch">Arquitetura, engenharia e viabilidade financeira em Belo Horizonte.</p></div>
+    <div><b>Endereço</b>Rua Santa Rita Durão, 444<br>Savassi · Belo Horizonte/MG<br>30140-111</div>
+    <div><b>Contato</b><a href="https://wa.me/5531999203886" target="_blank" rel="noopener">WhatsApp</a><br><a href="https://www.instagram.com/perlaconstrutora/" target="_blank" rel="noopener">Instagram</a><br><a href="https://youtube.com/@perlaconstrutora" target="_blank" rel="noopener">YouTube</a></div>
+    <div><b>Responsáveis técnicas</b>Eng. Stephanie Faina · CREA-MG 1413598390<br>Arq. Mariana Guimarães · CAU [confirmar]</div>
+    <div class="legal"><span>Perla Construtora LTDA · CNPJ 55.156.540/0001-50</span><span>Protótipo de layout · fotos e registros a confirmar</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// HERO — só a capa: entrada (fade+zoom discreto), parallax de scroll (pan+zoom do wrap) e tilt de mouse
+// (só desktop com ponteiro fino, nunca touch) na foto de fundo. Nada abaixo do hero é tocado por este script.
+// Se o GSAP/ScrollTrigger não carregar (CDN indisponível), a imagem fica estática e visível — não há
+// opacity:0 no CSS, só a animação via JS parte de opacity 0, então sem JS o navegador já renderiza opacity 1.
+(function () {
+  if (typeof gsap === 'undefined') return;
+  var heroEl = document.querySelector('.hero');
+  var wrap = document.querySelector('.hero-bg-wrap');
+  var img = document.querySelector('.hero-bg');
+  if (!heroEl || !wrap || !img) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // gsap.context() permite reverter tudo (tweens, ScrollTriggers, listeners) com ctx.revert() — não é
+  // chamado nesta página estática (nada é desmontado), mas mantém a implementação limpa e segura caso o
+  // script rode em outro contexto futuramente. Nunca usamos ScrollTrigger.getAll().kill() — isso mataria
+  // ScrollTriggers de outras partes do site.
+  var ctx = gsap.context(function () {
+    if (reduceMotion) {
+      gsap.set(wrap, { opacity: 1, scale: 1 });
+      return;
+    }
+
+    var hasScrollTrigger = typeof ScrollTrigger !== 'undefined';
+    if (hasScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+    // Entrada: fade + zoom-out discreto (0.8–1.3s, ease sofisticado)
+    gsap.fromTo(wrap, { opacity: 0, scale: 1.08 }, {
+      opacity: 1,
+      scale: 1.05,
+      duration: 1.1,
+      ease: 'power2.out',
+      onComplete: hasScrollTrigger ? initScroll : null
+    });
+
+    // Parallax de scroll: só liga depois da entrada terminar, partindo do mesmo scale:1.05 final —
+    // evita as duas animações disputarem a mesma propriedade ao mesmo tempo.
+    function initScroll() {
+      var mm = gsap.matchMedia();
+      mm.add({
+        desktop: '(min-width:1025px)',
+        tablet: '(min-width:601px) and (max-width:1024px)',
+        mobile: '(max-width:600px)'
+      }, function (context) {
+        var c = context.conditions;
+        var yP = c.desktop ? 14 : c.tablet ? 9 : 5;
+        var scaleTo = c.desktop ? 1.12 : c.tablet ? 1.08 : 1.05;
+
+        var tween = gsap.fromTo(wrap, { scale: 1.05, yPercent: 0 }, {
+          yPercent: yP,
+          scale: scaleTo,
+          ease: 'none',
+          scrollTrigger: { trigger: heroEl, start: 'top top', end: 'bottom top', scrub: 1 }
+        });
+
+        return function () {
+          if (tween.scrollTrigger) tween.scrollTrigger.kill();
+          tween.kill();
+        };
+      });
+    }
+
+    // Tilt sutil com o mouse na foto (camada separada do wrap) — só desktop com ponteiro fino, nunca touch
+    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+      var qx = gsap.quickTo(img, 'xPercent', { duration: 0.6, ease: 'power3.out' });
+      var qy = gsap.quickTo(img, 'yPercent', { duration: 0.6, ease: 'power3.out' });
+      var onMove = function (e) {
+        var r = heroEl.getBoundingClientRect();
+        qx(((e.clientX - r.left) / r.width - 0.5) * 3);
+        qy(((e.clientY - r.top) / r.height - 0.5) * 2);
+      };
+      var onLeave = function () { qx(0); qy(0); };
+      heroEl.addEventListener('mousemove', onMove);
+      heroEl.addEventListener('mouseleave', onLeave);
+
+      return function () {
+        heroEl.removeEventListener('mousemove', onMove);
+        heroEl.removeEventListener('mouseleave', onLeave);
+      };
+    }
+  }, heroEl);
+})();
+</script>
+
+<script>
+// Revelação ao rolar: fade+translate leve nas seções abaixo do hero. Sem lib, ~15 linhas, some sob prefers-reduced-motion.
+if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('[data-reveal], [data-reveal-group]').forEach(function (el) { io.observe(el); });
+}
+</script>
+
+<script>
+// Menu mobile: hamburger abre/fecha o drawer (<900px), fecha ao clicar num link, ao apertar Esc ou ao
+// clicar fora, e trava o scroll do body enquanto está aberto.
+(function () {
+  var burger = document.querySelector('.nav-burger');
+  var panel = document.getElementById('nav-mobile');
+  if (!burger || !panel) return;
+
+  function close() {
+    burger.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('open');
+    document.body.classList.remove('nav-open');
+  }
+  function open() {
+    burger.setAttribute('aria-expanded', 'true');
+    panel.classList.add('open');
+    document.body.classList.add('nav-open');
+  }
+
+  burger.addEventListener('click', function () {
+    if (panel.classList.contains('open')) close(); else open();
+  });
+  panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  document.addEventListener('click', function (e) {
+    if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== burger && !burger.contains(e.target)) close();
+  });
+  window.addEventListener('resize', function () { if (window.innerWidth > 900) close(); });
+})();
+</script>
+</body>
+</html>
