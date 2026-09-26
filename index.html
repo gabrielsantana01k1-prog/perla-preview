@@ -82,11 +82,14 @@ h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;letter-spacing:-.015em}
 .wordmark{display:flex;align-items:center;gap:12px}
 .wordmark img{width:40px;height:40px;border-radius:50%;flex:0 0 auto;object-fit:cover}
 .wordmark .txt{display:grid;line-height:1;gap:3px}
-.wordmark b{font-weight:500;font-size:22px;letter-spacing:.14em;background:linear-gradient(180deg,#F3ECD4,var(--ouro) 75%,var(--ouro-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wordmark b{font-weight:600;font-size:22px;letter-spacing:.14em;background:linear-gradient(180deg,var(--ouro-paper-texto),#4A3B24 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .wordmark .sub{font-size:10px;letter-spacing:.42em;color:var(--perola-3);text-transform:lowercase}
 .nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--perola-2)}
-.nav ul a{transition:color .3s ease}
+.nav ul a{position:relative;transition:color .3s ease;padding-bottom:4px}
 .nav ul a:hover{color:var(--perola)}
+.nav ul a.is-active{color:var(--perola)}
+.nav ul a.is-active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ouro)}
+@media (prefers-reduced-motion:reduce){.nav ul a{transition:none}}
 .btn{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:15px 22px;border:1px solid var(--ouro);color:var(--perola);transition:background .35s ease,color .35s ease}
 .btn:hover{background:var(--ouro);color:var(--tinta)}
 .btn.solid{background:var(--ouro);color:var(--tinta)}
@@ -130,7 +133,15 @@ body.nav-open{overflow:hidden}
 @media (max-width:900px){
   .hero-split{grid-template-columns:1fr;min-height:auto}
   .hero-foto{aspect-ratio:4/3;order:2}
-  .hero-texto{order:1;padding-bottom:clamp(32px,6vw,48px)}
+  .hero-texto{order:1;padding-bottom:24px}
+}
+/* Espaçamento comprimido só no celular — a foto precisa aparecer bem mais cedo (era só depois de
+   toda a rolagem do texto). Reduz as margens entre título/descrição/CTAs/tags, sem mudar desktop. */
+@media (max-width:600px){
+  .hero h1{margin-top:16px}
+  .hero .lede{margin-top:14px}
+  .hero .ctas{margin-top:20px;gap:14px}
+  .trio{margin-top:20px;padding-top:14px}
 }
 
 /* ============ SEÇÕES ============ */
@@ -186,24 +197,34 @@ section[id]{scroll-margin-top:88px}
 .bar-legend p{padding-right:18px;max-width:40ch}
 .bar-legend p+p{padding-left:18px}
 .src{font-size:12px;color:var(--tinta-2);margin-top:10px}
-@media (max-width:640px){.bar-legend{grid-template-columns:1fr;gap:12px}.bar-legend p+p{padding-left:0}}
+.custo-fotos{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.custo-fotos figure{margin:0}
+.custo-fotos img{width:100%;height:auto;display:block;border:1px solid var(--linha-p)}
+.custo-fotos figcaption{margin-top:8px;font-size:12.5px;color:var(--tinta-2)}
+@media (max-width:640px){.bar-legend{grid-template-columns:1fr;gap:12px}.bar-legend p+p{padding-left:0}.custo-fotos{grid-template-columns:1fr}}
 .bar div{transition:background-color .5s ease}
 .bar:hover .a{background-color:#332921}
 
 /* ============ MÉTODO ============ */
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--linha)}
-.step{padding:34px clamp(16px,2vw,30px) 0 0;display:grid;gap:18px;align-content:start}
-.step+.step{padding-left:clamp(16px,2vw,30px);border-left:1px solid var(--linha)}
-.step .n{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:clamp(48px,5vw,68px);line-height:.8;display:inline-block;transition:color .4s ease,transform .4s cubic-bezier(.2,.7,.1,1)}
-.step:hover .n{color:var(--perola);transform:translateX(3px)}
-.step h3{font-size:clamp(22px,2.2vw,26px);line-height:1.15;position:relative;display:inline-block}
-.step h3::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ouro);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.1,1)}
-.step:hover h3::after{transform:scaleX(1)}
-.step p{color:var(--perola-2);font-size:var(--fs-support)}
-.step ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:13px;color:var(--perola-3)}
-.step li::before{content:"— ";color:var(--ouro-deep)}
-@media (max-width:980px){.steps{grid-template-columns:1fr 1fr;row-gap:44px}.step:nth-child(3){border-left:0;padding-left:0}}
-@media (max-width:560px){.steps{grid-template-columns:1fr}.step,.step+.step{border-left:0;padding-left:0;padding-top:28px;border-top:1px solid var(--linha)}.steps{border-top:0}}
+.metodo-tabs{border-top:1px solid var(--linha);padding-top:8px}
+.metodo-nav{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--linha);margin-bottom:40px}
+.metodo-tab{appearance:none;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;display:flex;align-items:baseline;gap:10px;padding:18px 0 14px;margin-right:clamp(20px,3.2vw,44px);font-family:inherit;color:var(--perola-3);transition:color .3s ease,border-color .3s ease}
+.metodo-tab i{font-family:var(--num);font-style:italic;font-size:20px;color:var(--ouro)}
+.metodo-tab span{font-size:15px;letter-spacing:.01em}
+.metodo-tab:hover{color:var(--perola)}
+.metodo-tab:focus-visible{outline:2px solid var(--ouro);outline-offset:4px}
+.metodo-tab.is-active{color:var(--perola);border-bottom-color:var(--ouro)}
+.metodo-painel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center}
+.metodo-painel[hidden]{display:none}
+.metodo-foto{display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--linha);background:var(--onix-2)}
+.metodo-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.metodo-foto-wide{aspect-ratio:37/5}
+.metodo-texto h3{font-size:clamp(22px,2.2vw,26px);line-height:1.15;margin-bottom:16px}
+.metodo-texto p{color:var(--perola-2);font-size:var(--fs-support)}
+.metodo-texto ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:13px;color:var(--perola-3)}
+.metodo-texto li::before{content:"— ";color:var(--ouro-deep)}
+@media (max-width:760px){.metodo-nav{margin-bottom:28px}.metodo-tab{padding:12px 0 10px;margin-right:20px}.metodo-tab span{font-size:14px}.metodo-painel{grid-template-columns:1fr;gap:20px}}
+@media (prefers-reduced-motion:reduce){.metodo-tab{transition:none}}
 
 /* ============ SERVIÇOS ============ */
 .doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
@@ -218,14 +239,23 @@ section[id]{scroll-margin-top:88px}
 .door:hover .arr{opacity:1;transform:translateX(0)}
 .door p{color:var(--perola-2);font-size:var(--fs-support)}
 .door .for{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--perola-3)}
-.niche{margin-top:clamp(16px,2vw,28px);display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,3vw,48px);align-items:center;border:1px solid var(--linha);padding:clamp(24px,2.6vw,36px);transition:border-color .4s ease}
+.niche{margin-top:clamp(16px,2vw,28px);display:grid;grid-template-columns:auto auto 1fr auto;gap:clamp(20px,3vw,40px);align-items:center;border:1px solid var(--linha);padding:clamp(24px,2.6vw,36px);transition:border-color .4s ease}
 .niche:hover{border-color:var(--ouro-deep)}
+.niche .foto{width:88px;height:88px;flex:0 0 auto;border:1px solid var(--linha);overflow:hidden}
+.niche .foto img{width:100%;height:100%;object-fit:cover;display:block}
 .niche .it{font-size:clamp(44px,4.4vw,60px);line-height:.8}
 .niche h3{font-size:clamp(22px,2.2vw,26px)}
 .niche p{color:var(--perola-2);font-size:var(--fs-support);max-width:60ch;margin-top:6px}
-@media (max-width:900px){.doors{grid-template-columns:1fr}.niche{grid-template-columns:1fr}}
+@media (max-width:900px){.doors{grid-template-columns:1fr}.niche{grid-template-columns:auto 1fr;grid-template-areas:"foto num" "texto texto" "link link"}.niche .foto{grid-area:foto}.niche .it{grid-area:num}.niche>div{grid-area:texto}.niche .link{grid-area:link;margin-top:12px}}
 
 /* ============ OBRAS ============ */
+.filtros{display:flex;flex-wrap:wrap;gap:10px;margin:-8px 0 28px}
+.filtro{appearance:none;background:none;cursor:pointer;font-family:inherit;font-size:13px;letter-spacing:.02em;color:var(--perola-3);border:1px solid var(--linha-2);border-radius:999px;padding:8px 18px;transition:color .25s ease,border-color .25s ease,background-color .25s ease}
+.filtro:hover{color:var(--perola);border-color:var(--perola-3)}
+.filtro:focus-visible{outline:2px solid var(--ouro);outline-offset:2px}
+.filtro.is-active{color:var(--onix);background:var(--perola);border-color:var(--perola)}
+.filtros-vazio{color:var(--perola-3);font-size:14px;padding:18px 0;margin:0}
+.works li[hidden]{display:none}
 .works{list-style:none;margin:0;padding:0;border-top:1px solid var(--linha)}
 .works li{border-bottom:1px solid var(--linha)}
 .works a{display:grid;grid-template-columns:56px 56px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) 40px;gap:20px;align-items:center;padding:26px 0;transition:padding .35s ease}
@@ -386,7 +416,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
       <li><a href="#obras">Obras</a></li>
       <li><a href="#quem-somos">Quem somos</a></li>
     </ul>
-    <a class="btn" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Agendar conversa</a>
+    <a class="btn" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">Agendar conversa</a>
     <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Abrir menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -397,7 +427,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
     <li><a href="#obras">Obras</a></li>
     <li><a href="#quem-somos">Quem somos</a></li>
   </ul>
-  <a class="btn solid" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Agendar conversa <span class="arr">→</span></a>
+  <a class="btn solid" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">Agendar conversa <span class="arr">→</span></a>
 </div>
 
 <header class="hero hero-split" id="top">
@@ -406,18 +436,23 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
     <h1 class="rise d2">A casa definitiva da sua família, <span class="it">sem o caos</span> da obra<span class="dot">.</span></h1>
     <p class="lede rise d3">Projeto, viabilidade financeira e execução com um só responsável — do primeiro tijolo à entrega.</p>
     <div class="ctas rise d4">
-      <a class="btn solid" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Quero fazer minha obra <span class="arr">→</span></a>
+      <a class="btn solid" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">Quero fazer minha obra <span class="arr">→</span></a>
       <a class="link" href="#obras">Conhecer as obras</a>
     </div>
     <div class="trio rise d4"><span>Arquitetura</span><span>Engenharia</span><span>Viabilidade</span></div>
   </div>
   <div class="hero-foto">
-    <!-- TEMPORÁRIO: foto real da Lagoa dos Ingleses, só até a foto escolhida (Pexels, Max Vakhtbovych,
-         ID 8134746, licença pexels.com/license) chegar — Pexels está bloqueado pela política de rede
-         deste ambiente (blocked em www.pexels.com/images.pexels.com), sem download ainda. Quando a foto
-         entrar: trocar src/srcset abaixo e adicionar <span class="hero-nota">Imagem ilustrativa</span> —
-         obrigatório para essa foto por não ser obra da Perla, nunca usar no portfólio. -->
-    <picture><source srcset="assets/img/hero/hero-lagoa-deck.webp" type="image/webp"><img src="assets/img/hero/hero-lagoa-deck.jpg" alt="Deck e piscina da Casa na Lagoa dos Ingleses, obra entregue pela Perla" width="720" height="1280" loading="eager" fetchpriority="high"></picture>
+    <!-- Imagem ilustrativa (Pexels, Max Vakhtbovych, ID 8134746, licença pexels.com/license) — não é
+         obra executada pela Perla, por isso o aviso abaixo. Nunca usar esta foto no portfólio/páginas
+         de projeto. Arquivo enviado diretamente pelo usuário (download do Pexels bloqueado pela
+         política de rede deste ambiente). -->
+    <picture>
+      <source media="(max-width:640px)" srcset="assets/img/hero/hero-casa-piscina-960.webp" type="image/webp">
+      <source media="(max-width:640px)" srcset="assets/img/hero/hero-casa-piscina-960.jpg">
+      <source srcset="assets/img/hero/hero-casa-piscina-1920.webp" type="image/webp">
+      <img src="assets/img/hero/hero-casa-piscina-1920.jpg" alt="Casa contemporânea com deck de madeira, revestimento em pedra clara e piscina — imagem ilustrativa" width="1920" height="1281" loading="eager" fetchpriority="high">
+    </picture>
+    <span class="hero-nota">Imagem ilustrativa</span>
   </div>
 </header>
 
@@ -458,7 +493,11 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
         <p>Demolição, elétrica, hidráulica, regularização e serviços preliminares.</p>
         <p>Porcelanato, metais, marcenaria, iluminação. Aqui entra o seu gosto, com o valor real que sobra.</p>
       </div>
-      <p class="src">Fonte: Perla Construtora, dois orçamentos reais de reforma residencial, 2026.</p>
+      <div class="custo-fotos">
+        <figure><picture><source srcset="assets/img/custo/infraestrutura.webp" type="image/webp"><img src="assets/img/custo/infraestrutura.jpg" alt="Obra em andamento — parte de infraestrutura de uma reforma" loading="lazy" width="640" height="480"></picture><figcaption>Infraestrutura em obra</figcaption></figure>
+        <figure><picture><source srcset="assets/img/custo/acabamento.webp" type="image/webp"><img src="assets/img/custo/acabamento.jpg" alt="Ambiente finalizado — acabamento escolhido pelo cliente" loading="lazy" width="640" height="480"></picture><figcaption>Acabamento escolhido pelo cliente</figcaption></figure>
+      </div>
+      <p class="src">Fonte: Perla Construtora, dois orçamentos reais de reforma residencial, 2026. Cada obra tem uma proporção diferente — 37% é o que apareceu nesses dois orçamentos, não uma regra fixa para toda reforma.</p>
     </div>
   </div>
 </section>
@@ -472,12 +511,33 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
       </div>
       <p>Arquitetura e engenharia trabalham juntas desde o início. É isso que evita a obra que cobra o que o projeto não resolveu.</p>
     </div>
-    <div class="steps" data-reveal-group>
-      <div class="step"><span class="n">01</span><h3>Projeto</h3><p>Briefing da rotina da família, levantamento arquitetônico, projeto executivo e interiores.</p><ul><li>Imagens 3D</li><li>Aprovação na Prefeitura</li></ul></div>
-      <div class="step"><span class="n">02</span><h3>Viabilidade</h3><p>O EVF transforma o projeto em números: custo por etapa, curva ABC e cenários para decidir com clareza.</p><ul><li>Orçamento real</li><li>Simulação de cenários</li></ul></div>
-      <div class="step"><span class="n">03</span><h3>Gestão e execução</h3><p>Cronograma físico-financeiro revisado toda semana e equipe própria sob a engenheira responsável.</p><ul><li>Relatório semanal</li><li>Fotos diárias no app</li></ul></div>
-      <div class="step"><span class="n">04</span><h3>Entrega</h3><p>Checklist final item por item, obra limpa e com garantia. Você recebe a casa pronta para morar.</p><ul><li>Vistoria de entrega</li><li>Garantia de obra</li></ul></div>
+    <div class="metodo-tabs" data-reveal>
+      <div class="metodo-nav" role="tablist" aria-label="Etapas do método Perla">
+        <button type="button" class="metodo-tab is-active" role="tab" id="metodo-tabbtn-01" aria-selected="true" aria-controls="metodo-painel-01"><i>01</i><span>Projeto</span></button>
+        <button type="button" class="metodo-tab" role="tab" id="metodo-tabbtn-02" aria-selected="false" tabindex="-1" aria-controls="metodo-painel-02"><i>02</i><span>Viabilidade</span></button>
+        <button type="button" class="metodo-tab" role="tab" id="metodo-tabbtn-03" aria-selected="false" tabindex="-1" aria-controls="metodo-painel-03"><i>03</i><span>Gestão e execução</span></button>
+        <button type="button" class="metodo-tab" role="tab" id="metodo-tabbtn-04" aria-selected="false" tabindex="-1" aria-controls="metodo-painel-04"><i>04</i><span>Entrega</span></button>
+      </div>
+      <div class="metodo-paineis">
+        <div class="metodo-painel is-active" id="metodo-painel-01" role="tabpanel" aria-labelledby="metodo-tabbtn-01">
+          <picture class="metodo-foto"><source srcset="assets/img/metodo/projeto.webp" type="image/webp"><img src="assets/img/metodo/projeto.jpg" alt="Projeto 3D da recepção, Clínica Dr. Mateus Garcia" loading="lazy" width="640" height="480"></picture>
+          <div class="metodo-texto"><h3>Projeto</h3><p>Briefing da rotina da família, levantamento arquitetônico, projeto executivo e interiores.</p><ul><li>Imagens 3D</li><li>Aprovação na Prefeitura</li></ul></div>
+        </div>
+        <div class="metodo-painel" id="metodo-painel-02" role="tabpanel" aria-labelledby="metodo-tabbtn-02" hidden>
+          <picture class="metodo-foto metodo-foto-wide"><source srcset="assets/img/metodo/viabilidade.webp" type="image/webp"><img src="assets/img/metodo/viabilidade.jpg" alt="Gráfico com a proporção real de um orçamento: 37% parte cinza e 63% acabamento escolhido pelo cliente" loading="lazy" width="960" height="130"></picture>
+          <div class="metodo-texto"><h3>Viabilidade</h3><p>O EVF transforma o projeto em números: custo por etapa, curva ABC e cenários para decidir com clareza.</p><ul><li>Orçamento real</li><li>Simulação de cenários</li></ul></div>
+        </div>
+        <div class="metodo-painel" id="metodo-painel-03" role="tabpanel" aria-labelledby="metodo-tabbtn-03" hidden>
+          <picture class="metodo-foto"><source srcset="assets/img/metodo/gestao.webp" type="image/webp"><img src="assets/img/metodo/gestao.jpg" alt="Obra em execução, acabamentos protegidos, Casa na Lagoa dos Ingleses" loading="lazy" width="640" height="480"></picture>
+          <div class="metodo-texto"><h3>Gestão e execução</h3><p>Cronograma físico-financeiro revisado toda semana e equipe própria sob a engenheira responsável.</p><ul><li>Relatório semanal</li><li>Fotos diárias no app</li></ul></div>
+        </div>
+        <div class="metodo-painel" id="metodo-painel-04" role="tabpanel" aria-labelledby="metodo-tabbtn-04" hidden>
+          <picture class="metodo-foto"><source srcset="assets/img/metodo/entrega.webp" type="image/webp"><img src="assets/img/metodo/entrega.jpg" alt="Deck e piscina entregues, Casa na Lagoa dos Ingleses" loading="lazy" width="640" height="480"></picture>
+          <div class="metodo-texto"><h3>Entrega</h3><p>Checklist final item por item, obra limpa e com garantia. Você recebe a casa pronta para morar.</p><ul><li>Vistoria de entrega</li><li>Garantia de obra</li></ul></div>
+        </div>
+      </div>
     </div>
+    <noscript><style>.metodo-nav{display:none}.metodo-painel[hidden]{display:grid!important}</style></noscript>
   </div>
 </section>
 
@@ -491,7 +551,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
       <p>Escolha pelo momento em que você está. Todas terminam no mesmo padrão de entrega.</p>
     </div>
     <div class="doors" data-reveal-group>
-      <a class="door" href="https://wa.me/5531999203886" target="_blank" rel="noopener">
+      <a class="door" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">
         <picture class="photo">
           <source srcset="assets/img/servicos/obra-em-andamento.webp" type="image/webp">
           <img src="assets/img/servicos/obra-em-andamento.jpg" alt="Obra em andamento, corredor em acabamento" loading="lazy" width="1069" height="714">
@@ -499,7 +559,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
         <div><p class="for">Para quem vai construir ou reformar</p><h3 style="margin-top:12px">Quero fazer minha obra com vocês<span class="arr">→</span></h3></div>
         <p>Projeto, EVF, gestão e execução completas. Um contrato, uma responsável técnica, zero intermediários.</p>
       </a>
-      <a class="door" href="https://wa.me/5531999203886" target="_blank" rel="noopener">
+      <a class="door" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">
         <picture class="photo">
           <source srcset="assets/img/servicos/house-flipping-antes-depois.webp" type="image/webp">
           <img src="assets/img/servicos/house-flipping-antes-depois.jpg" alt="Sala de apartamento reformado, antes e depois" loading="lazy" width="1080" height="621">
@@ -507,7 +567,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
         <div><p class="for">Perla Transforma</p><h3 style="margin-top:12px">Transformar meu ambiente sem obra<span class="arr">→</span></h3></div>
         <p>Consultoria de layout, acabamentos e decoração para valorizar o imóvel com agilidade e sem quebra-quebra.</p>
       </a>
-      <a class="door" href="https://wa.me/5531999203886" target="_blank" rel="noopener">
+      <a class="door" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">
         <picture class="photo">
           <source srcset="assets/img/servicos/projeto-3d-arco-piscina.webp" type="image/webp">
           <img src="assets/img/servicos/projeto-3d-arco-piscina.jpg" alt="Projeto 3D de terraço com arco e piscina" loading="lazy" width="960" height="1280">
@@ -517,9 +577,10 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
       </a>
     </div>
     <div class="niche" data-reveal>
+      <span class="foto"><picture><source srcset="assets/img/servicos/clinica-sala-atendimento.webp" type="image/webp"><img src="assets/img/servicos/clinica-sala-atendimento.jpg" alt="Sala de atendimento entregue pela Perla, Clínica Dr. Mateus Garcia" loading="lazy" width="88" height="88"></picture></span>
       <span class="it">5+</span>
       <div><h3>Clínicas e consultórios</h3><p>Formato próprio para médicos e dentistas: projeto, aprovação na Vigilância Sanitária, obra e marcenaria, com prazo pensado para a clínica voltar a faturar.</p></div>
-      <a class="link" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Falar sobre minha clínica</a>
+      <a class="link" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20meu%20projeto." target="_blank" rel="noopener">Falar sobre minha clínica</a>
     </div>
   </div>
 </section>
@@ -533,13 +594,21 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
       </div>
       <p>Residências, clínicas e reformas para investimento em Belo Horizonte e região.</p>
     </div>
+    <div class="filtros" role="group" aria-label="Filtrar obras por categoria">
+      <button type="button" class="filtro is-active" data-filtro="todas">Todas</button>
+      <button type="button" class="filtro" data-filtro="residencial">Residencial</button>
+      <button type="button" class="filtro" data-filtro="reforma">Reforma</button>
+      <button type="button" class="filtro" data-filtro="saude">Saúde</button>
+      <button type="button" class="filtro" data-filtro="institucional">Institucional</button>
+    </div>
+    <p class="filtros-vazio" hidden>Nenhuma obra nessa categoria por enquanto.</p>
     <ul class="works" data-reveal-group>
-      <li><a href="obras/casa-lagoa-dos-ingleses/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/lagoa-ingleses.webp" type="image/webp"><img src="assets/img/obras/lagoa-ingleses.jpg" alt="Deck e piscina da Casa na Lagoa dos Ingleses" loading="lazy" width="240" height="240"></picture></span><span class="n">01</span><h3>Casa na Lagoa dos Ingleses</h3><span class="t">Residencial · Construção</span><span class="d">Varanda com vista, espaço gourmet</span><span class="go">→</span></a></li>
-      <li><a href="obras/casa-vale-dos-cristais/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/vale-cristais.webp" type="image/webp"><img src="assets/img/obras/vale-cristais.jpg" alt="Arco e piscina da Casa no Vale dos Cristais" loading="lazy" width="240" height="240"></picture></span><span class="n">02</span><h3>Casa no Vale dos Cristais</h3><span class="t">Residencial · Obra interna</span><span class="d">Execução completa dos interiores</span><span class="go">→</span></a></li>
-      <li><a href="obras/clinica-dr-mateus-garcia/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/clinica-mateus-garcia.webp" type="image/webp"><img src="assets/img/obras/clinica-mateus-garcia.jpg" alt="Consultório entregue com a marca do cliente, Clínica Dr. Mateus Garcia" loading="lazy" width="240" height="240"></picture></span><span class="n">03</span><h3>Clínica Dr. Mateus Garcia</h3><span class="t">Saúde · Projeto + obra</span><span class="d">Alvará e sanitário deferidos</span><span class="go">→</span></a></li>
-      <li><a href="obras/centro-referencia-queijo-artesanal/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/queijo-artesanal.webp" type="image/webp"><img src="assets/img/obras/queijo-artesanal.jpg" alt="Balcão de recepção com a marca, Centro de Referência do Queijo Artesanal" loading="lazy" width="240" height="240"></picture></span><span class="n">04</span><h3>Centro de Referência do Queijo Artesanal</h3><span class="t">Institucional</span><span class="d">Obra completa</span><span class="go">→</span></a></li>
-      <li><a href="obras/apartamento-110m2-buritis/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/apartamento-110m2.webp" type="image/webp"><img src="assets/img/obras/apartamento-110m2.jpg" alt="Projeto 3D da suíte, Apartamento de 110 m² em 4 meses" loading="lazy" width="240" height="240"></picture><span class="selo-3d-mini">3D</span></span><span class="n">05</span><h3>Apartamento de 110 m² em 4 meses</h3><span class="t">Residencial · Reforma</span><span class="d">Compra em abril, mudança em 30 de julho</span><span class="go">→</span></a></li>
-      <li><a href="obras/rua-andaluzita-savassi/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/rua-andaluzita.webp" type="image/webp"><img src="assets/img/obras/rua-andaluzita.jpg" alt="Cozinha entregue, Rua Andaluzita, Savassi" loading="lazy" width="240" height="240"></picture></span><span class="n">06</span><h3>Rua Andaluzita, Savassi</h3><span class="t">Reforma para valorizar</span><span class="d">Consultoria + execução</span><span class="go">→</span></a></li>
+      <li data-categoria="residencial"><a href="obras/casa-lagoa-dos-ingleses/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/lagoa-ingleses.webp" type="image/webp"><img src="assets/img/obras/lagoa-ingleses.jpg" alt="Deck e piscina da Casa na Lagoa dos Ingleses" loading="lazy" width="240" height="240"></picture></span><span class="n">01</span><h3>Casa na Lagoa dos Ingleses</h3><span class="t">Residencial · Construção</span><span class="d">Varanda com vista, espaço gourmet</span><span class="go">→</span></a></li>
+      <li data-categoria="residencial reforma"><a href="obras/casa-vale-dos-cristais/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/vale-cristais.webp" type="image/webp"><img src="assets/img/obras/vale-cristais.jpg" alt="Arco e piscina da Casa no Vale dos Cristais" loading="lazy" width="240" height="240"></picture></span><span class="n">02</span><h3>Casa no Vale dos Cristais</h3><span class="t">Residencial · Obra interna</span><span class="d">Execução completa dos interiores</span><span class="go">→</span></a></li>
+      <li data-categoria="saude"><a href="obras/clinica-dr-mateus-garcia/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/clinica-mateus-garcia.webp" type="image/webp"><img src="assets/img/obras/clinica-mateus-garcia.jpg" alt="Consultório entregue com a marca do cliente, Clínica Dr. Mateus Garcia" loading="lazy" width="240" height="240"></picture></span><span class="n">03</span><h3>Clínica Dr. Mateus Garcia</h3><span class="t">Saúde · Projeto + obra</span><span class="d">Alvará e sanitário deferidos</span><span class="go">→</span></a></li>
+      <li data-categoria="institucional"><a href="obras/centro-referencia-queijo-artesanal/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/queijo-artesanal.webp" type="image/webp"><img src="assets/img/obras/queijo-artesanal.jpg" alt="Balcão de recepção com a marca, Centro de Referência do Queijo Artesanal" loading="lazy" width="240" height="240"></picture></span><span class="n">04</span><h3>Centro de Referência do Queijo Artesanal</h3><span class="t">Institucional</span><span class="d">Obra completa</span><span class="go">→</span></a></li>
+      <li data-categoria="residencial reforma"><a href="obras/apartamento-110m2-buritis/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/apartamento-110m2.webp" type="image/webp"><img src="assets/img/obras/apartamento-110m2.jpg" alt="Projeto 3D da suíte, Apartamento de 110 m² em 4 meses" loading="lazy" width="240" height="240"></picture><span class="selo-3d-mini">3D</span></span><span class="n">05</span><h3>Apartamento de 110 m² em 4 meses</h3><span class="t">Residencial · Reforma</span><span class="d">Compra em abril, mudança em 30 de julho</span><span class="go">→</span></a></li>
+      <li data-categoria="residencial reforma"><a href="obras/rua-andaluzita-savassi/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/rua-andaluzita.webp" type="image/webp"><img src="assets/img/obras/rua-andaluzita.jpg" alt="Cozinha entregue, Rua Andaluzita, Savassi" loading="lazy" width="240" height="240"></picture></span><span class="n">06</span><h3>Rua Andaluzita, Savassi</h3><span class="t">Reforma para valorizar</span><span class="d">Consultoria + execução</span><span class="go">→</span></a></li>
     </ul>
   </div>
 </section>
@@ -714,6 +783,104 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
     if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== burger && !burger.contains(e.target)) close();
   });
   window.addEventListener('resize', function () { if (window.innerWidth > 900) close(); });
+})();
+</script>
+
+<script>
+// Abas do Método: clique/toque/teclado (setas, Home, End) trocam a aba ativa; imagem e texto do
+// painel trocam juntos. Sem JS, o CSS acima (regra no <noscript>) já deixa todos os painéis visíveis.
+(function () {
+  var nav = document.querySelector('.metodo-nav');
+  if (!nav) return;
+  var tabs = Array.prototype.slice.call(nav.querySelectorAll('.metodo-tab'));
+  var paineis = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+
+  function ativar(index, foco) {
+    tabs.forEach(function (t, i) {
+      var ativo = i === index;
+      t.classList.toggle('is-active', ativo);
+      t.setAttribute('aria-selected', ativo ? 'true' : 'false');
+      t.tabIndex = ativo ? 0 : -1;
+      paineis[i].hidden = !ativo;
+      paineis[i].classList.toggle('is-active', ativo);
+    });
+    if (foco) tabs[index].focus();
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { ativar(i, false); });
+    tab.addEventListener('keydown', function (e) {
+      var novo = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') novo = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') novo = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') novo = 0;
+      else if (e.key === 'End') novo = tabs.length - 1;
+      if (novo !== null) { e.preventDefault(); ativar(novo, true); }
+    });
+  });
+})();
+</script>
+
+<script>
+// Filtro do portfólio: mostra só as obras da categoria escolhida (categorias reais, vindas do
+// data-categoria de cada item). Sem JS, nada fica escondido — todas as obras aparecem normalmente.
+(function () {
+  var barra = document.querySelector('.filtros');
+  var lista = document.querySelector('.works');
+  var vazio = document.querySelector('.filtros-vazio');
+  if (!barra || !lista) return;
+  var botoes = Array.prototype.slice.call(barra.querySelectorAll('.filtro'));
+  var itens = Array.prototype.slice.call(lista.children);
+
+  botoes.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      botoes.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+      var alvo = btn.getAttribute('data-filtro');
+      var visiveis = 0;
+      itens.forEach(function (li) {
+        var cats = (li.getAttribute('data-categoria') || '').split(' ');
+        var mostra = alvo === 'todas' || cats.indexOf(alvo) !== -1;
+        li.hidden = !mostra;
+        if (mostra) visiveis++;
+      });
+      if (vazio) vazio.hidden = visiveis > 0;
+    });
+  });
+})();
+</script>
+
+<script>
+// Indicador de seção ativa no menu: marca no menu (desktop) o link da seção visível no momento,
+// sem esconder títulos atrás do header fixo (rootMargin já compensa a altura do header). Se a API
+// não existir, simplesmente não marca nada — o menu continua funcionando normalmente.
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav > .shell > ul > li > a[href^="#"]'));
+  if (!links.length) return;
+  var pares = links.map(function (a) { return { link: a, alvo: document.querySelector(a.getAttribute('href')) }; })
+    .filter(function (p) { return p.alvo; });
+  if (!pares.length) return;
+  var LINHA = 130; // px do topo, abaixo do header fixo, que define a "linha ativa"
+  var pendente = false;
+
+  function atualizar() {
+    pendente = false;
+    var atual = null;
+    pares.forEach(function (p) {
+      var r = p.alvo.getBoundingClientRect();
+      if (r.top <= LINHA && r.bottom > 96) atual = p;
+    });
+    links.forEach(function (a) { a.classList.remove('is-active'); });
+    if (atual) atual.link.classList.add('is-active');
+  }
+  function pedirAtualizacao() {
+    if (pendente) return;
+    pendente = true;
+    requestAnimationFrame(atualizar);
+  }
+
+  window.addEventListener('scroll', pedirAtualizacao, { passive: true });
+  window.addEventListener('resize', pedirAtualizacao);
+  atualizar();
 })();
 </script>
 </body>

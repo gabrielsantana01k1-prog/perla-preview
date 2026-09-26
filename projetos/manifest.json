@@ -80,6 +80,11 @@
       "capa": "04-entregue-arco-e-piscina.jpg",
       "publicado": true,
       "autorizacao_cliente": "concedida em 2026-09-26",
+      "comparador": {
+        "antes": "01-antes-fachada-quando-a-perla-assumiu-a-obra.jpg",
+        "depois": "03-entregue-fachada-finalizada.jpg",
+        "legenda": "Mesma fachada: estrutura em concreto aparente e resultado finalizado, ambas do post DTyDfZ7kc39"
+      },
       "fotos": [
         {
           "ordem": 1,

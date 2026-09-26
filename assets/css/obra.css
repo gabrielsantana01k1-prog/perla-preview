@@ -41,7 +41,7 @@ img{max-width:100%;display:block}
 .wordmark{display:flex;align-items:center;gap:12px}
 .wordmark img{width:40px;height:40px;border-radius:50%;flex:0 0 auto;object-fit:cover}
 .wordmark .txt{display:grid;line-height:1;gap:3px}
-.wordmark b{font-weight:500;font-size:22px;letter-spacing:.14em;background:linear-gradient(180deg,#F3ECD4,var(--ouro) 75%,var(--ouro-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wordmark b{font-weight:600;font-size:22px;letter-spacing:.14em;background:linear-gradient(180deg,var(--ouro-paper-texto),#4A3B24 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .wordmark .sub{font-size:10px;letter-spacing:.42em;color:var(--perola-3);text-transform:lowercase}
 .nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--perola-2)}
 .nav ul a{transition:color .3s ease}
@@ -89,6 +89,24 @@ body.nav-open{overflow:hidden}
 .etapa-bloco:last-of-type{border-bottom:0}
 .etapa-bloco h2{font-size:clamp(22px,2.6vw,30px);margin-bottom:28px}
 
+/* Comparador antes/depois: só existe quando o manifest declara duas fotos da mesma cena
+   (mesmo post, mesmo ângulo) — nunca forçado quando as fotos disponíveis não combinam de verdade. */
+.comparador-secao{padding-block:clamp(40px,6vw,72px);border-bottom:1px solid var(--linha)}
+.comparador-secao h2{font-size:clamp(22px,2.6vw,30px)}
+.comp-legenda-topo{margin-top:12px;color:var(--perola-2);font-size:var(--fs-support);max-width:60ch}
+.comp-frame{position:relative;margin-top:28px;aspect-ratio:3/2;max-width:900px;overflow:hidden;border:1px solid var(--linha);--pos:50%}
+.comp-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;-webkit-user-select:none;user-select:none;pointer-events:none}
+.comp-antes{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.comp-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:var(--ouro);pointer-events:none}
+.comp-handle::before{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;border-radius:50%;background:var(--ouro);transform:translate(-50%,-50%)}
+.comp-label{position:absolute;top:16px;padding:5px 12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:rgba(14,13,12,.55);color:#EFE7D6;pointer-events:none}
+.comp-label-antes{left:16px}
+.comp-label-depois{right:16px}
+.comp-slider{width:100%;max-width:900px;display:block;margin:18px 0 0;appearance:none;height:4px;background:var(--linha-2);border-radius:999px;outline-offset:6px}
+.comp-slider::-webkit-slider-thumb{appearance:none;width:22px;height:22px;border-radius:50%;background:var(--ouro);border:3px solid var(--onix);cursor:ew-resize}
+.comp-slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--ouro);border:3px solid var(--onix);cursor:ew-resize}
+@media (max-width:600px){.comp-label{top:10px;font-size:10px;padding:4px 9px}}
+
 /* Grade responsiva real: até 3 colunas no desktop, 2 no tablet, 1 no celular — número de colunas
    por bloco nunca passa do número de fotos daquele bloco (uma foto sozinha não fica esticada numa
    grade de 3, nem encolhida numa coluna estreita cercada de vazio). `cols-N` é calculado no gerador
@@ -103,6 +121,7 @@ body.nav-open{overflow:hidden}
 .etapa-grid figure{margin:0}
 .etapa-grid .frame{position:relative;background:var(--onix-2);border:1px solid var(--linha);display:block}
 .etapa-grid img{width:100%;height:auto;cursor:zoom-in;display:block}
+.etapa-grid img:focus-visible{outline:2px solid var(--ouro);outline-offset:-2px}
 .etapa-grid figcaption{margin-top:10px;font-size:var(--fs-meta);color:var(--perola-3)}
 .selo{position:absolute;top:12px;left:12px;z-index:2;background:rgba(14,13,12,.86);border:1px solid var(--ouro);color:var(--ouro);font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:6px 10px}
 .selo.entregue{left:auto;right:12px;border-color:var(--linha-2);color:var(--perola-2)}

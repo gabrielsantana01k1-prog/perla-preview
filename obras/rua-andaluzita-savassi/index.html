@@ -13,7 +13,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
 <link rel="stylesheet" href="../../assets/css/obra.css">
-<noscript><style>[data-reveal]{opacity:1 !important;transform:none !important}</style></noscript>
+<noscript><style>
+[data-reveal]{opacity:1 !important;transform:none !important}
+.comp-slider{display:none}
+.comp-frame{aspect-ratio:auto !important;display:flex !important;flex-wrap:wrap;gap:0}
+.comp-frame img{position:static !important;clip-path:none !important;width:50% !important;height:auto !important}
+.comp-antes{order:1}
+.comp-depois{order:2}
+.comp-handle{display:none}
+.comp-label{position:static !important;display:block !important;text-align:center;width:50%}
+.comp-label-antes{order:3}
+.comp-label-depois{order:4}
+</style></noscript>
 </head>
 <body class="tem-barra-contato">
 <nav class="nav" aria-label="Principal">
@@ -28,7 +39,7 @@
       <li><a href="../../index.html#obras">Obras</a></li>
       <li><a href="../../index.html#quem-somos">Quem somos</a></li>
     </ul>
-    <a class="btn" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Agendar conversa</a>
+    <a class="btn" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20o%20projeto%20Rua%20Andaluzita%2C%20Savassi." target="_blank" rel="noopener">Agendar conversa</a>
     <button class="nav-burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Abrir menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -39,7 +50,7 @@
     <li><a href="../../index.html#obras">Obras</a></li>
     <li><a href="../../index.html#quem-somos">Quem somos</a></li>
   </ul>
-  <a class="btn solid" href="https://wa.me/5531999203886" target="_blank" rel="noopener">Agendar conversa <span class="arr">→</span></a>
+  <a class="btn solid" href="https://wa.me/5531999203886?text=Ol%C3%A1!%20Conheci%20a%20Perla%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20o%20projeto%20Rua%20Andaluzita%2C%20Savassi." target="_blank" rel="noopener">Agendar conversa <span class="arr">→</span></a>
 </div>
 
 <header class="obra-topo">
@@ -66,7 +77,7 @@
         <h2>Antes</h2>
         <div class="etapa-grid mini">
         <figure data-lightbox-index="0" style="--fw:360px">
-          <span class="frame"><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/01-antes-cozinha-antes-e-estudo-3d.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/01-antes-cozinha-antes-e-estudo-3d.jpg" alt="Rua Andaluzita, Savassi — Cozinha antes e estudo 3D" width="360" height="314" loading="lazy"></picture></span>
+          <span class="frame"><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/01-antes-cozinha-antes-e-estudo-3d.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/01-antes-cozinha-antes-e-estudo-3d.jpg" alt="Rua Andaluzita, Savassi — Cozinha antes e estudo 3D" width="360" height="314" loading="lazy" tabindex="0" role="button" aria-label="Ampliar: Rua Andaluzita, Savassi — Cozinha antes e estudo 3D"></picture></span>
           <figcaption>Cozinha antes e estudo 3D</figcaption>
         </figure>
         </div>
@@ -78,7 +89,7 @@
         <h2>Projeto</h2>
         <div class="etapa-grid mini">
         <figure data-lightbox-index="1" style="--fw:360px">
-          <span class="frame"><span class="selo">Imagem 3D do projeto</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/02-projeto-projeto-3d-da-cozinha.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/02-projeto-projeto-3d-da-cozinha.jpg" alt="Rua Andaluzita, Savassi — Projeto 3D da cozinha" width="360" height="314" loading="lazy"></picture></span>
+          <span class="frame"><span class="selo">Imagem 3D do projeto</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/02-projeto-projeto-3d-da-cozinha.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/02-projeto-projeto-3d-da-cozinha.jpg" alt="Rua Andaluzita, Savassi — Projeto 3D da cozinha" width="360" height="314" loading="lazy" tabindex="0" role="button" aria-label="Ampliar: Rua Andaluzita, Savassi — Projeto 3D da cozinha"></picture></span>
           <figcaption>Projeto 3D da cozinha</figcaption>
         </figure>
         </div>
@@ -90,20 +101,22 @@
         <h2>Entregue</h2>
         <div class="etapa-grid mini">
         <figure data-lightbox-index="2" style="--fw:360px">
-          <span class="frame"><span class="selo entregue">Entregue</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/03-entregue-cozinha-entregue.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/03-entregue-cozinha-entregue.jpg" alt="Rua Andaluzita, Savassi — Cozinha entregue" width="360" height="314" loading="eager" fetchpriority="high"></picture></span>
+          <span class="frame"><span class="selo entregue">Entregue</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/03-entregue-cozinha-entregue.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/03-entregue-cozinha-entregue.jpg" alt="Rua Andaluzita, Savassi — Cozinha entregue" width="360" height="314" loading="eager" fetchpriority="high" tabindex="0" role="button" aria-label="Ampliar: Rua Andaluzita, Savassi — Cozinha entregue"></picture></span>
           <figcaption>Cozinha entregue</figcaption>
         </figure>
         <figure data-lightbox-index="3" style="--fw:360px">
-          <span class="frame"><span class="selo entregue">Entregue</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/04-entregue-sala-com-varanda.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/04-entregue-sala-com-varanda.jpg" alt="Rua Andaluzita, Savassi — Sala com varanda" width="360" height="314" loading="lazy"></picture></span>
+          <span class="frame"><span class="selo entregue">Entregue</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/04-entregue-sala-com-varanda.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/04-entregue-sala-com-varanda.jpg" alt="Rua Andaluzita, Savassi — Sala com varanda" width="360" height="314" loading="lazy" tabindex="0" role="button" aria-label="Ampliar: Rua Andaluzita, Savassi — Sala com varanda"></picture></span>
           <figcaption>Sala com varanda</figcaption>
         </figure>
         <figure data-lightbox-index="4" style="--fw:360px">
-          <span class="frame"><span class="selo entregue">Entregue</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/05-entregue-banheiro-entregue.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/05-entregue-banheiro-entregue.jpg" alt="Rua Andaluzita, Savassi — Banheiro entregue" width="360" height="314" loading="lazy"></picture></span>
+          <span class="frame"><span class="selo entregue">Entregue</span><picture><source srcset="../../projetos/06-rua-andaluzita-savassi/05-entregue-banheiro-entregue.webp" type="image/webp"><img src="../../projetos/06-rua-andaluzita-savassi/05-entregue-banheiro-entregue.jpg" alt="Rua Andaluzita, Savassi — Banheiro entregue" width="360" height="314" loading="lazy" tabindex="0" role="button" aria-label="Ampliar: Rua Andaluzita, Savassi — Banheiro entregue"></picture></span>
           <figcaption>Banheiro entregue</figcaption>
         </figure>
         </div>
       </div>
     </section>
+
+
 
 <nav class="obra-prox" aria-label="Outros projetos">
   <a href="../apartamento-110m2-buritis/index.html"><span class="lbl">← Projeto anterior</span><span class="tt">Apartamento de 110 m² em 4 meses</span></a>
@@ -212,6 +225,7 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
 </script>
 <script>
 // Lightbox — tela cheia, setas + teclado, Esc fecha, contador "n / total", legenda e etapa.
+// Ao fechar, o foco volta pra miniatura que abriu a foto (nunca some pro topo da página).
 (function () {
   var fotos = JSON.parse(document.getElementById('fotos-data').textContent);
   var lb = document.getElementById('lightbox');
@@ -220,6 +234,7 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
   var etapaEl = document.getElementById('lightbox-etapa');
   var contador = document.getElementById('lightbox-contador');
   var atual = 0;
+  var gatilho = null;
 
   function mostrar(i) {
     atual = (i + fotos.length) % fotos.length;
@@ -230,12 +245,29 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
     etapaEl.textContent = f.etapa;
     contador.textContent = (atual + 1) + ' / ' + fotos.length;
   }
-  function abrir(i) { mostrar(i); lb.classList.add('open'); document.body.classList.add('nav-open', 'esconder-barra-contato'); }
-  function fechar() { lb.classList.remove('open'); document.body.classList.remove('nav-open', 'esconder-barra-contato'); }
+  function abrir(i, origem) {
+    gatilho = origem || null;
+    mostrar(i);
+    lb.classList.add('open');
+    document.body.classList.add('nav-open', 'esconder-barra-contato');
+    lb.querySelector('.fechar').focus();
+  }
+  function fechar() {
+    lb.classList.remove('open');
+    document.body.classList.remove('nav-open', 'esconder-barra-contato');
+    if (gatilho) { gatilho.focus(); gatilho = null; }
+  }
 
   document.querySelectorAll('[data-lightbox-index]').forEach(function (fig) {
-    fig.querySelector('img').addEventListener('click', function () {
-      abrir(parseInt(fig.getAttribute('data-lightbox-index'), 10));
+    var alvo = fig.querySelector('img');
+    alvo.addEventListener('click', function () {
+      abrir(parseInt(fig.getAttribute('data-lightbox-index'), 10), alvo);
+    });
+    alvo.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        abrir(parseInt(fig.getAttribute('data-lightbox-index'), 10), alvo);
+      }
     });
   });
   lb.querySelector('.fechar').addEventListener('click', fechar);
@@ -247,6 +279,18 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
     if (e.key === 'Escape') fechar();
     if (e.key === 'ArrowLeft') mostrar(atual - 1);
     if (e.key === 'ArrowRight') mostrar(atual + 1);
+  });
+})();
+</script>
+<script>
+// Comparador antes/depois: input range nativo (mouse, toque e teclado já funcionam sem código
+// extra) controla quanto da foto "depois" fica visível por cima da foto "antes".
+(function () {
+  var frame = document.getElementById('comp-frame');
+  var slider = document.getElementById('comp-slider');
+  if (!frame || !slider) return;
+  slider.addEventListener('input', function () {
+    frame.style.setProperty('--pos', slider.value + '%');
   });
 })();
 </script>
