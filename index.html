@@ -224,20 +224,22 @@ section[id]{scroll-margin-top:88px}
 
 /* ============ OBRAS ============ */
 .works{list-style:none;margin:0;padding:0;border-top:1px solid var(--linha)}
-.works li{display:grid;grid-template-columns:56px 56px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) 40px;gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid var(--linha);transition:padding .35s ease}
-.works li:hover{padding-left:10px}
-.works .thumb{width:56px;height:56px;overflow:hidden;flex:0 0 auto;border:1px solid var(--linha)}
+.works li{border-bottom:1px solid var(--linha)}
+.works a{display:grid;grid-template-columns:56px 56px minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) 40px;gap:20px;align-items:center;padding:26px 0;transition:padding .35s ease}
+.works a:hover{padding-left:10px}
+.works .thumb{width:56px;height:56px;overflow:hidden;flex:0 0 auto;border:1px solid var(--linha);position:relative}
 .works .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
-.works li:hover .thumb img{transform:scale(1.08)}
+.works a:hover .thumb img{transform:scale(1.08)}
+.works .thumb .selo-3d-mini{position:absolute;bottom:2px;right:2px;background:rgba(14,13,12,.86);border:1px solid var(--ouro);color:var(--ouro);font-size:7px;letter-spacing:.06em;padding:1px 3px;line-height:1}
 .works .n{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:26px;transition:color .35s ease}
-.works li:hover .n{color:var(--perola)}
+.works a:hover .n{color:var(--perola)}
 .works h3{font-size:clamp(20px,2vw,26px);line-height:1.2}
 .works .t{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--perola-3)}
 .works .d{font-size:var(--fs-meta);color:var(--perola-2)}
 .works .go{font-family:var(--num);font-style:italic;color:var(--ouro);font-size:22px;text-align:right;display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.1,1)}
-.works li:hover .go{transform:translateX(5px)}
+.works a:hover .go{transform:translateX(5px)}
 @media (max-width:820px){
-  .works li{grid-template-columns:56px 40px 1fr;row-gap:6px}
+  .works a{grid-template-columns:56px 40px 1fr;row-gap:6px}
   .works .thumb{grid-row:1/4}
   .works .n{grid-column:2;grid-row:1}
   .works h3{grid-column:3;grid-row:1}
@@ -320,7 +322,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20p
 <nav class="nav" aria-label="Principal">
   <div class="shell">
     <a href="#top" class="wordmark" aria-label="Perla Construtora">
-      <picture><source srcset="assets/img/brand/logo-perla-icon.webp" type="image/webp"><img src="assets/img/brand/logo-perla-icon.jpg" alt="" width="40" height="40" loading="eager"></picture>
+      <picture><source srcset="assets/img/brand/logo-perla-icon.webp" type="image/webp"><img src="assets/img/brand/logo-perla-icon.jpg" alt="Perla Construtora" width="40" height="40" loading="eager"></picture>
       <span class="txt"><b>PERLA</b><span class="sub">construtora</span></span>
     </a>
     <ul>
@@ -346,7 +348,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20p
 <header class="hero" id="top">
   <div class="hero-media" aria-hidden="true">
     <div class="hero-bg-wrap">
-      <img class="hero-bg" src="assets/img/hero/hero-penhasco.webp" alt="" width="1298" height="1600" loading="eager" fetchpriority="high">
+      <picture><source srcset="assets/img/hero/hero-lagoa-deck.webp" type="image/webp"><img class="hero-bg" src="assets/img/hero/hero-lagoa-deck.jpg" alt="Deck e piscina da Casa na Lagoa dos Ingleses, obra entregue pela Perla" width="720" height="1280" loading="eager" fetchpriority="high"></picture>
     </div>
     <div class="hero-video-overlay"></div>
   </div>
@@ -373,18 +375,18 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20p
 
 <div class="marquee-strip marble" aria-hidden="true">
   <div class="marquee-track">
-    <picture class="photo"><source srcset="assets/img/marquee/casa-alto-padrao.webp" type="image/webp"><img src="assets/img/marquee/casa-alto-padrao.jpg" alt="" loading="lazy" width="900" height="601"><span>Casa alto padrão</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/house-flipping-antes-depois.webp" type="image/webp"><img src="assets/img/marquee/house-flipping-antes-depois.jpg" alt="" loading="lazy" width="900" height="518"><span>House flipping</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/clinica-recepcao.webp" type="image/webp"><img src="assets/img/marquee/clinica-recepcao.jpg" alt="" loading="lazy" width="900" height="1122"><span>Clínica · BH</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/clinica-oncologia-infantil.webp" type="image/webp"><img src="assets/img/marquee/clinica-oncologia-infantil.jpg" alt="" loading="lazy" width="900" height="630"><span>Oncologia infantil</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/queijo-artesanal.webp" type="image/webp"><img src="assets/img/marquee/queijo-artesanal.jpg" alt="" loading="lazy" width="865" height="983"><span>Queijo Artesanal</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/projeto-3d-living.webp" type="image/webp"><img src="assets/img/marquee/projeto-3d-living.jpg" alt="" loading="lazy" width="900" height="506"><span>Projeto 3D</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/casa-alto-padrao.webp" type="image/webp"><img src="assets/img/marquee/casa-alto-padrao.jpg" alt="" loading="lazy" width="900" height="601"><span>Casa alto padrão</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/house-flipping-antes-depois.webp" type="image/webp"><img src="assets/img/marquee/house-flipping-antes-depois.jpg" alt="" loading="lazy" width="900" height="518"><span>House flipping</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/clinica-recepcao.webp" type="image/webp"><img src="assets/img/marquee/clinica-recepcao.jpg" alt="" loading="lazy" width="900" height="1122"><span>Clínica · BH</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/clinica-oncologia-infantil.webp" type="image/webp"><img src="assets/img/marquee/clinica-oncologia-infantil.jpg" alt="" loading="lazy" width="900" height="630"><span>Oncologia infantil</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/queijo-artesanal.webp" type="image/webp"><img src="assets/img/marquee/queijo-artesanal.jpg" alt="" loading="lazy" width="865" height="983"><span>Queijo Artesanal</span></picture>
-    <picture class="photo"><source srcset="assets/img/marquee/projeto-3d-living.webp" type="image/webp"><img src="assets/img/marquee/projeto-3d-living.jpg" alt="" loading="lazy" width="900" height="506"><span>Projeto 3D</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/casa-alto-padrao.webp" type="image/webp"><img src="assets/img/marquee/casa-alto-padrao.jpg" alt="Fachada de casa de alto padrão construída pela Perla" loading="lazy" width="900" height="601"><span>Casa alto padrão</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/house-flipping-antes-depois.webp" type="image/webp"><img src="assets/img/marquee/house-flipping-antes-depois.jpg" alt="Apartamento reformado em projeto de house flipping, antes e depois" loading="lazy" width="900" height="518"><span>House flipping</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-recepcao.webp" type="image/webp"><img src="assets/img/marquee/clinica-recepcao.jpg" alt="Consultório da Clínica Dr. Mateus Garcia, entregue com a marca do cliente" loading="lazy" width="900" height="1122"><span>Clínica · BH</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-oncologia-infantil.webp" type="image/webp"><img src="assets/img/marquee/clinica-oncologia-infantil.jpg" alt="Consultório de oncologia infantil com decoração acolhedora" loading="lazy" width="900" height="630"><span>Oncologia infantil</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/queijo-artesanal.webp" type="image/webp"><img src="assets/img/marquee/queijo-artesanal.jpg" alt="Centro de Referência do Queijo Artesanal, obra concluída" loading="lazy" width="865" height="983"><span>Queijo Artesanal</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/projeto-3d-living.webp" type="image/webp"><img src="assets/img/marquee/projeto-3d-living.jpg" alt="Render 3D de sala de estar com arco e vista para piscina" loading="lazy" width="900" height="506"><span>Projeto 3D</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/casa-alto-padrao.webp" type="image/webp"><img src="assets/img/marquee/casa-alto-padrao.jpg" alt="Fachada de casa de alto padrão construída pela Perla" loading="lazy" width="900" height="601"><span>Casa alto padrão</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/house-flipping-antes-depois.webp" type="image/webp"><img src="assets/img/marquee/house-flipping-antes-depois.jpg" alt="Apartamento reformado em projeto de house flipping, antes e depois" loading="lazy" width="900" height="518"><span>House flipping</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-recepcao.webp" type="image/webp"><img src="assets/img/marquee/clinica-recepcao.jpg" alt="Consultório da Clínica Dr. Mateus Garcia, entregue com a marca do cliente" loading="lazy" width="900" height="1122"><span>Clínica · BH</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/clinica-oncologia-infantil.webp" type="image/webp"><img src="assets/img/marquee/clinica-oncologia-infantil.jpg" alt="Consultório de oncologia infantil com decoração acolhedora" loading="lazy" width="900" height="630"><span>Oncologia infantil</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/queijo-artesanal.webp" type="image/webp"><img src="assets/img/marquee/queijo-artesanal.jpg" alt="Centro de Referência do Queijo Artesanal, obra concluída" loading="lazy" width="865" height="983"><span>Queijo Artesanal</span></picture>
+    <picture class="photo"><source srcset="assets/img/marquee/projeto-3d-living.webp" type="image/webp"><img src="assets/img/marquee/projeto-3d-living.jpg" alt="Render 3D de sala de estar com arco e vista para piscina" loading="lazy" width="900" height="506"><span>Projeto 3D</span></picture>
   </div>
 </div>
 
@@ -484,12 +486,12 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20p
       <p>Residências, clínicas e reformas para investimento em Belo Horizonte e região.</p>
     </div>
     <ul class="works" data-reveal-group>
-      <li><span class="thumb"><picture><source srcset="assets/img/obras/lagoa-ingleses.webp" type="image/webp"><img src="assets/img/obras/lagoa-ingleses.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">01</span><h3>Casa na Lagoa dos Ingleses</h3><span class="t">Residencial · Construção</span><span class="d">Varanda com vista, espaço gourmet</span><span class="go">→</span></li>
-      <li><span class="thumb"><picture><source srcset="assets/img/obras/vale-cristais.webp" type="image/webp"><img src="assets/img/obras/vale-cristais.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">02</span><h3>Casa no Vale dos Cristais</h3><span class="t">Residencial · Obra interna</span><span class="d">Execução completa dos interiores</span><span class="go">→</span></li>
-      <li><span class="thumb"><picture><source srcset="assets/img/obras/clinica-mateus-garcia.webp" type="image/webp"><img src="assets/img/obras/clinica-mateus-garcia.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">03</span><h3>Clínica Dr. Mateus Garcia</h3><span class="t">Saúde · Projeto + obra</span><span class="d">Alvará e sanitário deferidos</span><span class="go">→</span></li>
-      <li><span class="thumb"><picture><source srcset="assets/img/obras/queijo-artesanal.webp" type="image/webp"><img src="assets/img/obras/queijo-artesanal.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">04</span><h3>Centro de Referência do Queijo Artesanal</h3><span class="t">Institucional</span><span class="d">Obra completa</span><span class="go">→</span></li>
-      <li><span class="thumb"><picture><source srcset="assets/img/obras/apartamento-110m2.webp" type="image/webp"><img src="assets/img/obras/apartamento-110m2.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">05</span><h3>Apartamento de 110 m² em 4 meses</h3><span class="t">Residencial · Reforma</span><span class="d">Compra em abril, mudança em 30 de julho</span><span class="go">→</span></li>
-      <li><span class="thumb"><picture><source srcset="assets/img/obras/rua-andaluzita.webp" type="image/webp"><img src="assets/img/obras/rua-andaluzita.jpg" alt="" loading="lazy" width="240" height="240"></picture></span><span class="n">06</span><h3>Rua Andaluzita, Savassi</h3><span class="t">Reforma para valorizar</span><span class="d">Consultoria + execução</span><span class="go">→</span></li>
+      <li><a href="obras/casa-lagoa-dos-ingleses/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/lagoa-ingleses.webp" type="image/webp"><img src="assets/img/obras/lagoa-ingleses.jpg" alt="Deck e piscina da Casa na Lagoa dos Ingleses" loading="lazy" width="240" height="240"></picture></span><span class="n">01</span><h3>Casa na Lagoa dos Ingleses</h3><span class="t">Residencial · Construção</span><span class="d">Varanda com vista, espaço gourmet</span><span class="go">→</span></a></li>
+      <li><a href="obras/casa-vale-dos-cristais/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/vale-cristais.webp" type="image/webp"><img src="assets/img/obras/vale-cristais.jpg" alt="Arco e piscina da Casa no Vale dos Cristais" loading="lazy" width="240" height="240"></picture></span><span class="n">02</span><h3>Casa no Vale dos Cristais</h3><span class="t">Residencial · Obra interna</span><span class="d">Execução completa dos interiores</span><span class="go">→</span></a></li>
+      <li><a href="obras/clinica-dr-mateus-garcia/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/clinica-mateus-garcia.webp" type="image/webp"><img src="assets/img/obras/clinica-mateus-garcia.jpg" alt="Consultório entregue com a marca do cliente, Clínica Dr. Mateus Garcia" loading="lazy" width="240" height="240"></picture></span><span class="n">03</span><h3>Clínica Dr. Mateus Garcia</h3><span class="t">Saúde · Projeto + obra</span><span class="d">Alvará e sanitário deferidos</span><span class="go">→</span></a></li>
+      <li><a href="obras/centro-referencia-queijo-artesanal/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/queijo-artesanal.webp" type="image/webp"><img src="assets/img/obras/queijo-artesanal.jpg" alt="Balcão de recepção com a marca, Centro de Referência do Queijo Artesanal" loading="lazy" width="240" height="240"></picture></span><span class="n">04</span><h3>Centro de Referência do Queijo Artesanal</h3><span class="t">Institucional</span><span class="d">Obra completa</span><span class="go">→</span></a></li>
+      <li><a href="obras/apartamento-110m2-buritis/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/apartamento-110m2.webp" type="image/webp"><img src="assets/img/obras/apartamento-110m2.jpg" alt="Projeto 3D da suíte, Apartamento de 110 m² em 4 meses" loading="lazy" width="240" height="240"></picture><span class="selo-3d-mini">3D</span></span><span class="n">05</span><h3>Apartamento de 110 m² em 4 meses</h3><span class="t">Residencial · Reforma</span><span class="d">Compra em abril, mudança em 30 de julho</span><span class="go">→</span></a></li>
+      <li><a href="obras/rua-andaluzita-savassi/index.html"><span class="thumb"><picture><source srcset="assets/img/obras/rua-andaluzita.webp" type="image/webp"><img src="assets/img/obras/rua-andaluzita.jpg" alt="Cozinha entregue, Rua Andaluzita, Savassi" loading="lazy" width="240" height="240"></picture></span><span class="n">06</span><h3>Rua Andaluzita, Savassi</h3><span class="t">Reforma para valorizar</span><span class="d">Consultoria + execução</span><span class="go">→</span></a></li>
     </ul>
   </div>
 </section>
@@ -521,7 +523,6 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20p
         <p class="role">Arquitetura &amp; interiores</p>
         <h3>Mariana Guimarães</h3>
         <p>Arquiteta e advogada. Une estética, funcionalidade e segurança jurídica, das aprovações na Prefeitura e na Vigilância ao último detalhe de marcenaria.</p>
-        <p class="reg">CAU nº [confirmar]</p>
       </article>
     </div>
     <div class="values" data-reveal-group>
@@ -543,9 +544,9 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20p
     </div>
     <div class="quotes" data-reveal-group>
       <!-- Nome e foto reais (Dr. Mateus Garcia) aguardando termo de autorização assinado — ver PROGRESS.md. Até lá, atribuição fica só por profissão/cidade. -->
-      <figure><span class="mark">“</span><blockquote>Alvará de localização e sanitário deferido! Tudo certo. A fiscal elogiou muito o projeto. Agradeço vocês mais uma vez por tudo!</blockquote><figcaption>Odontologia · Belo Horizonte <em style="font-style:normal;color:var(--perola-3)">— nome e foto aguardando autorização</em></figcaption></figure>
+      <figure><span class="mark">“</span><blockquote>Alvará de localização e sanitário deferido! Tudo certo. A fiscal elogiou muito o projeto. Agradeço vocês mais uma vez por tudo!</blockquote><figcaption>Dr. Mateus Garcia · Odontologia, BH</figcaption></figure>
       <!-- Nome real (cliente de Lourdes/BH, consultório de psicanálise) ainda não identificado com a Mariana — aguardando quem é + autorização. -->
-      <figure><span class="mark">“</span><blockquote>Além de um projeto impecável e das ótimas sugestões, ela também se preocupava com o custo e o benefício de cada indicação. Meu consultório está confortável e maravilhoso!</blockquote><figcaption>Psicanálise · Lourdes, BH <em style="font-style:normal;color:var(--perola-3)">— nome aguardando autorização</em></figcaption></figure>
+      <figure><span class="mark">“</span><blockquote>Além de um projeto impecável e das ótimas sugestões, ela também se preocupava com o custo e o benefício de cada indicação. Meu consultório está confortável e maravilhoso!</blockquote><figcaption>Cliente · Psicanálise, Lourdes</figcaption></figure>
       <figure><span class="mark">“</span><blockquote>Nesse ritmo aceleradíssimo que é minha vida, gerir uma obra seria praticamente impossível.</blockquote><figcaption>Cliente · Reforma residencial</figcaption></figure>
     </div>
   </div>
@@ -565,11 +566,11 @@ footer .legal{grid-column:1/-1;border-top:1px solid var(--linha);padding-top:20p
 
 <footer>
   <div class="shell">
-    <div><a href="#top" class="wordmark"><picture><source srcset="assets/img/brand/logo-perla-icon.webp" type="image/webp"><img src="assets/img/brand/logo-perla-icon.jpg" alt="" width="40" height="40" loading="lazy"></picture><span class="txt"><b>PERLA</b><span class="sub">construtora</span></span></a><p style="margin-top:18px;max-width:30ch">Arquitetura, engenharia e viabilidade financeira em Belo Horizonte.</p></div>
+    <div><a href="#top" class="wordmark"><picture><source srcset="assets/img/brand/logo-perla-icon.webp" type="image/webp"><img src="assets/img/brand/logo-perla-icon.jpg" alt="Perla Construtora" width="40" height="40" loading="lazy"></picture><span class="txt"><b>PERLA</b><span class="sub">construtora</span></span></a><p style="margin-top:18px;max-width:30ch">Arquitetura, engenharia e viabilidade financeira em Belo Horizonte.</p></div>
     <div><b>Endereço</b>Rua Santa Rita Durão, 444<br>Savassi · Belo Horizonte/MG<br>30140-111</div>
     <div><b>Contato</b><a href="https://wa.me/5531999203886" target="_blank" rel="noopener">WhatsApp</a><br><a href="https://www.instagram.com/perlaconstrutora/" target="_blank" rel="noopener">Instagram</a><br><a href="https://youtube.com/@perlaconstrutora" target="_blank" rel="noopener">YouTube</a></div>
-    <div><b>Responsáveis técnicas</b>Eng. Stephanie Faina · CREA-MG 1413598390<br>Arq. Mariana Guimarães · CAU [confirmar]</div>
-    <div class="legal"><span>Perla Construtora LTDA · CNPJ 55.156.540/0001-50</span><span>Protótipo de layout · fotos e registros a confirmar</span></div>
+    <div><b>Responsáveis técnicas</b>Eng. Stephanie Faina · CREA-MG 1413598390<br>Arq. Mariana Guimarães</div>
+    <div class="legal"><span>Perla Construtora LTDA · CNPJ 55.156.540/0001-50</span></div>
   </div>
 </footer>
 

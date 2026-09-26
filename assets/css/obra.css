@@ -1,0 +1,139 @@
+/* ============ SISTEMA PERLA · páginas de projeto (/obras/{slug}) ============ */
+/* Tokens e nav/footer/botão são os mesmos do index.html — copiados aqui porque o site não usa
+   build step nem CSS compartilhado por import; qualquer mudança de marca no index.html precisa
+   ser replicada aqui manualmente (ver CLAUDE.md / PROGRESS.md). */
+:root{
+  color-scheme: dark;
+  --onix:#0E0D0C; --onix-2:#141210;
+  --perola:#EFE7D6; --perola-2:#B3A994; --perola-3:#89806F;
+  --ouro:#C2A56E; --ouro-deep:#9C8A5E;
+  --linha:rgba(239,231,214,.10); --linha-2:rgba(239,231,214,.18);
+  --display:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --num:"Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --gutter:clamp(20px,5vw,72px);
+  --max:1240px;
+  --fs-support:15.5px;
+  --fs-meta:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--onix);color:var(--perola);font-family:var(--display);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;letter-spacing:-.015em}
+img{max-width:100%;display:block}
+.shell{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+.label{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--perola);font-weight:500}
+.label.dim{color:var(--perola-3)}
+.it{font-family:var(--num);font-style:italic;font-weight:400;color:var(--ouro);letter-spacing:0}
+.dot{color:var(--ouro)}
+:focus-visible{outline:1px solid var(--ouro);outline-offset:4px}
+
+/* ============ NAV (idêntico ao index.html) ============ */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(14,13,12,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+.nav .shell{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.wordmark{display:flex;align-items:center;gap:12px}
+.wordmark img{width:40px;height:40px;border-radius:50%;flex:0 0 auto;object-fit:cover}
+.wordmark .txt{display:grid;line-height:1;gap:3px}
+.wordmark b{font-weight:500;font-size:22px;letter-spacing:.14em;background:linear-gradient(180deg,#F3ECD4,var(--ouro) 75%,var(--ouro-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wordmark .sub{font-size:10px;letter-spacing:.42em;color:var(--perola-3);text-transform:lowercase}
+.nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--perola-2)}
+.nav ul a{transition:color .3s ease}
+.nav ul a:hover{color:var(--perola)}
+.btn{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:15px 22px;border:1px solid var(--ouro);color:var(--perola);transition:background .35s ease,color .35s ease}
+.btn:hover{background:var(--ouro);color:var(--onix)}
+.btn.solid{background:var(--ouro);color:var(--onix)}
+.btn.solid:hover{background:var(--perola)}
+.btn .arr{font-family:var(--num);font-style:italic;font-size:18px;letter-spacing:0;text-transform:none}
+.link{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--perola-2);border-bottom:1px solid var(--linha-2);padding-bottom:4px;transition:color .3s ease,border-color .3s ease}
+.link:hover{color:var(--perola);border-color:var(--ouro)}
+.nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;padding:0;margin:0;background:none;border:0;cursor:pointer;flex:0 0 auto}
+.nav-burger span{display:block;width:20px;height:1.5px;background:var(--perola);transition:transform .3s cubic-bezier(.2,.7,.1,1),opacity .25s ease}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;left:0;right:0;top:73px;bottom:0;z-index:9;background:rgba(14,13,12,.98);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:8px var(--gutter) 32px;overflow-y:auto}
+.nav-mobile.open{display:block}
+.nav-mobile ul{display:block;list-style:none;margin:0;padding:0}
+.nav-mobile li{border-bottom:1px solid var(--linha)}
+.nav-mobile ul a{display:block;padding:20px 2px;font-family:var(--display);font-size:clamp(22px,6vw,28px);color:var(--perola)}
+.nav-mobile .btn{margin-top:28px;justify-content:center;width:100%}
+body.nav-open{overflow:hidden}
+@media (max-width:900px){.nav>.shell>ul,.nav>.shell>.btn{display:none}.nav-burger{display:flex}}
+@media (max-width:480px){.nav .btn{padding:11px 14px;font-size:10px;letter-spacing:.18em}}
+
+/* ============ TOPO DO PROJETO ============ */
+.obra-topo{padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,64px)}
+.obra-topo .voltar{display:inline-flex;align-items:center;gap:8px;margin-bottom:28px}
+.obra-topo h1{font-size:clamp(34px,5.4vw,64px);line-height:1.04;margin-top:14px}
+.obra-topo .t{display:block;margin-top:18px;font-size:var(--fs-meta);letter-spacing:.24em;text-transform:uppercase;color:var(--perola-3)}
+.obra-topo .resumo{margin-top:22px;max-width:56ch;color:var(--perola-2);font-size:var(--fs-support)}
+
+/* ============ LINHA DO TEMPO ============ */
+.timeline{display:flex;flex-wrap:wrap;gap:10px 28px;padding-block:22px;border-block:1px solid var(--linha)}
+.timeline button{background:none;border:0;padding:0;margin:0;cursor:pointer;font-family:var(--display);color:var(--perola-3);font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:color .3s ease}
+.timeline button::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.55}
+.timeline button:hover{color:var(--ouro)}
+
+/* ============ GALERIA POR ETAPA ============ */
+.etapa-bloco{padding-block:clamp(40px,6vw,72px);border-bottom:1px solid var(--linha);scroll-margin-top:96px}
+.etapa-bloco:last-of-type{border-bottom:0}
+.etapa-bloco h2{font-size:clamp(22px,2.6vw,30px);margin-bottom:28px}
+.etapa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px)}
+.etapa-grid figure{margin:0;grid-column:span 3}
+.etapa-grid figure.v{grid-column:span 1}
+.etapa-grid figure.h{grid-column:span 2}
+@media (max-width:720px){.etapa-grid figure.v,.etapa-grid figure.h{grid-column:span 3}}
+.etapa-grid .frame{position:relative;background:var(--onix-2);border:1px solid var(--linha)}
+.etapa-grid img{width:100%;height:auto;cursor:zoom-in}
+.etapa-grid figcaption{margin-top:10px;font-size:var(--fs-meta);color:var(--perola-3)}
+.selo-3d{position:absolute;top:12px;left:12px;z-index:2;background:rgba(14,13,12,.86);border:1px solid var(--ouro);color:var(--ouro);font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:6px 10px}
+
+/* Rua Andaluzita e qualquer etapa cujas fotos sejam pequenas (frame de vídeo, <=480px de largura):
+   grade de miniaturas densa, nunca em destaque largo — regra explícita da especificação. */
+.etapa-grid.mini{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.etapa-grid.mini figure{grid-column:span 1 !important}
+
+/* ============ CTA FINAL ============ */
+.obra-cta{padding-block:clamp(64px,9vw,120px);text-align:center;border-top:1px solid var(--linha)}
+.obra-cta h2{font-size:clamp(28px,4vw,44px)}
+.obra-cta .btn{margin-top:28px}
+
+/* ============ NAV PROJETO ANTERIOR / PRÓXIMO ============ */
+.obra-prox{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--linha)}
+.obra-prox a{padding:clamp(24px,4vw,40px) var(--gutter);transition:background .3s ease}
+.obra-prox a:hover{background:var(--onix-2)}
+.obra-prox a:last-child{text-align:right;border-left:1px solid var(--linha)}
+.obra-prox .lbl{display:block;font-size:var(--fs-meta);letter-spacing:.2em;text-transform:uppercase;color:var(--perola-3);margin-bottom:8px}
+.obra-prox .tt{font-size:clamp(18px,2.4vw,24px)}
+@media (max-width:600px){.obra-prox{grid-template-columns:1fr}.obra-prox a:last-child{border-left:0;border-top:1px solid var(--linha);text-align:left}}
+
+/* ============ LIGHTBOX ============ */
+.lightbox{position:fixed;inset:0;z-index:50;display:none;background:rgba(14,13,12,.97);backdrop-filter:blur(6px)}
+.lightbox.open{display:flex;align-items:center;justify-content:center}
+.lightbox figure{margin:0;max-width:min(94vw,1100px);max-height:88vh;text-align:center}
+.lightbox img{max-width:100%;max-height:78vh;width:auto;height:auto;margin:0 auto;object-fit:contain}
+.lightbox figcaption{margin-top:14px;color:var(--perola-2);font-size:var(--fs-support)}
+.lightbox figcaption .etapa{color:var(--perola-3);text-transform:uppercase;letter-spacing:.2em;font-size:var(--fs-meta);display:block;margin-top:4px}
+.lightbox .fechar,.lightbox .seta{position:absolute;background:none;border:0;color:var(--perola);cursor:pointer;padding:14px;font-family:var(--num);font-style:italic}
+.lightbox .fechar{top:8px;right:8px;font-size:28px}
+.lightbox .seta{top:50%;transform:translateY(-50%);font-size:40px}
+.lightbox .seta.prev{left:4px}
+.lightbox .seta.next{right:4px}
+.lightbox .contador{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:var(--fs-meta);color:var(--perola-3);letter-spacing:.1em}
+@media (max-width:600px){.lightbox .seta{font-size:30px;padding:10px}}
+
+/* ============ RODAPÉ (idêntico ao index.html) ============ */
+footer{padding-block:56px}
+footer .shell{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;font-size:var(--fs-meta);color:var(--perola-3)}
+footer b{display:block;color:var(--perola-2);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+footer a{display:block;margin-top:2px;transition:color .3s ease}
+footer a:hover{color:var(--perola)}
+footer .legal{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:24px;padding-top:24px;border-top:1px solid var(--linha)}
+@media (max-width:820px){footer .shell{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){footer .shell{grid-template-columns:1fr}}
+
+/* reveal ao rolar — mesmo mecanismo do index.html */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.1,1),transform .7s cubic-bezier(.2,.7,.1,1)}
+[data-reveal].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}}

@@ -1,0 +1,417 @@
+{
+  "gerado_em": "2026-09-26",
+  "fonte": "Instagram @perlaconstrutora",
+  "versao": 2,
+  "projetos": [
+    {
+      "slug": "casa-lagoa-dos-ingleses",
+      "pasta": "01-casa-lagoa-dos-ingleses",
+      "titulo": "Casa na Lagoa dos Ingleses",
+      "capa": "05-entregue-deck-e-piscina.jpg",
+      "publicado": true,
+      "autorizacao_cliente": "concedida em 2026-09-26",
+      "fotos": [
+        {
+          "ordem": 1,
+          "arquivo": "01-projeto-projeto-3d-da-area-social.jpg",
+          "etapa": "projeto",
+          "legenda": "Projeto 3D da area social",
+          "largura": 1024,
+          "altura": 819,
+          "origem": "foto do post DXmBc1rltZ-",
+          "link_post": "https://www.instagram.com/p/DXmBc1rltZ-/"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "02-obra-area-social-em-execucao.jpg",
+          "etapa": "obra",
+          "legenda": "Area social em execucao",
+          "largura": 1086,
+          "altura": 868,
+          "origem": "foto do post DXmBc1rltZ-",
+          "link_post": "https://www.instagram.com/p/DXmBc1rltZ-/"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "03-obra-escada-estrutural-em-obra.jpg",
+          "etapa": "obra",
+          "legenda": "Escada estrutural em obra",
+          "largura": 1086,
+          "altura": 868,
+          "origem": "foto do post DXmBc1rltZ-",
+          "link_post": "https://www.instagram.com/p/DXmBc1rltZ-/"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "04-obra-acabamentos-protegidos-na-reta-final.jpg",
+          "etapa": "obra",
+          "legenda": "Acabamentos protegidos na reta final",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DZ7oK-gsSER",
+          "link_post": "https://www.instagram.com/p/DZ7oK-gsSER/"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "05-entregue-deck-e-piscina.jpg",
+          "etapa": "entregue",
+          "legenda": "Deck e piscina",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DZ7oK-gsSER",
+          "link_post": "https://www.instagram.com/p/DZ7oK-gsSER/"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "06-entregue-vista-da-casa-e-do-lote.jpg",
+          "etapa": "entregue",
+          "legenda": "Vista da casa e do lote",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DZ7oK-gsSER",
+          "link_post": "https://www.instagram.com/p/DZ7oK-gsSER/"
+        }
+      ]
+    },
+    {
+      "slug": "casa-vale-dos-cristais",
+      "pasta": "02-casa-vale-dos-cristais",
+      "titulo": "Casa no Vale dos Cristais",
+      "capa": "04-entregue-arco-e-piscina.jpg",
+      "publicado": true,
+      "autorizacao_cliente": "concedida em 2026-09-26",
+      "fotos": [
+        {
+          "ordem": 1,
+          "arquivo": "01-antes-fachada-quando-a-perla-assumiu-a-obra.jpg",
+          "etapa": "antes",
+          "legenda": "Fachada quando a Perla assumiu a obra",
+          "largura": 855,
+          "altura": 571,
+          "origem": "foto do post DTyDfZ7kc39",
+          "link_post": "https://www.instagram.com/p/DTyDfZ7kc39/"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "02-obra-interior-em-obra.jpg",
+          "etapa": "obra",
+          "legenda": "Interior em obra",
+          "largura": 1080,
+          "altura": 722,
+          "origem": "foto do post DTyDfZ7kc39",
+          "link_post": "https://www.instagram.com/p/DTyDfZ7kc39/"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "03-entregue-fachada-finalizada.jpg",
+          "etapa": "entregue",
+          "legenda": "Fachada finalizada",
+          "largura": 1026,
+          "altura": 685,
+          "origem": "foto do post DTyDfZ7kc39",
+          "link_post": "https://www.instagram.com/p/DTyDfZ7kc39/"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "04-entregue-arco-e-piscina.jpg",
+          "etapa": "entregue",
+          "legenda": "Arco e piscina",
+          "largura": 1024,
+          "altura": 684,
+          "origem": "foto do post DTyDfZ7kc39",
+          "link_post": "https://www.instagram.com/p/DTyDfZ7kc39/"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "05-entregue-sala-com-vista-para-as-montanhas.jpg",
+          "etapa": "entregue",
+          "legenda": "Sala com vista para as montanhas",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DXjcr0-xk3c",
+          "link_post": "https://www.instagram.com/p/DXjcr0-xk3c/"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "06-entregue-escada-social.jpg",
+          "etapa": "entregue",
+          "legenda": "Escada social",
+          "largura": 1024,
+          "altura": 684,
+          "origem": "foto do post DTyDfZ7kc39",
+          "link_post": "https://www.instagram.com/p/DTyDfZ7kc39/"
+        }
+      ]
+    },
+    {
+      "slug": "clinica-dr-mateus-garcia",
+      "pasta": "03-clinica-dr-mateus-garcia",
+      "titulo": "Clinica Dr. Mateus Garcia",
+      "capa": "04-entregue-consultorio-com-a-marca-do-cliente.jpg",
+      "publicado": true,
+      "autorizacao_cliente": "concedida em 2026-09-26",
+      "fotos": [
+        {
+          "ordem": 1,
+          "arquivo": "01-projeto-projeto-3d-da-recepcao.jpg",
+          "etapa": "projeto",
+          "legenda": "Projeto 3D da recepcao",
+          "largura": 739,
+          "altura": 427,
+          "origem": "foto do post DCt8Fk4O361",
+          "link_post": "https://www.instagram.com/p/DCt8Fk4O361/"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "02-antes-sala-antes-da-obra.jpg",
+          "etapa": "antes",
+          "legenda": "Sala antes da obra",
+          "largura": 900,
+          "altura": 1200,
+          "origem": "foto do post DVeffvYkcbp",
+          "link_post": "https://www.instagram.com/p/DVeffvYkcbp/"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "03-obra-obra-em-andamento.jpg",
+          "etapa": "obra",
+          "legenda": "Obra em andamento",
+          "largura": 900,
+          "altura": 1200,
+          "origem": "foto do post DVeffvYkcbp",
+          "link_post": "https://www.instagram.com/p/DVeffvYkcbp/"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "04-entregue-consultorio-com-a-marca-do-cliente.jpg",
+          "etapa": "entregue",
+          "legenda": "Consultorio com a marca do cliente",
+          "largura": 1080,
+          "altura": 1440,
+          "origem": "foto do post DVeffvYkcbp",
+          "link_post": "https://www.instagram.com/p/DVeffvYkcbp/"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "05-entregue-sala-de-atendimento.jpg",
+          "etapa": "entregue",
+          "legenda": "Sala de atendimento",
+          "largura": 906,
+          "altura": 1206,
+          "origem": "foto do post DVeffvYkcbp",
+          "link_post": "https://www.instagram.com/p/DVeffvYkcbp/"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "06-entregue-consultorio-entregue.jpg",
+          "etapa": "entregue",
+          "legenda": "Consultorio entregue",
+          "largura": 1080,
+          "altura": 1440,
+          "origem": "foto do post DVeffvYkcbp",
+          "link_post": "https://www.instagram.com/p/DVeffvYkcbp/"
+        }
+      ]
+    },
+    {
+      "slug": "centro-referencia-queijo-artesanal",
+      "pasta": "04-centro-referencia-queijo-artesanal",
+      "titulo": "Centro de Referencia do Queijo Artesanal",
+      "capa": "01-entregue-balcao-de-recepcao-com-a-marca.jpg",
+      "publicado": true,
+      "autorizacao_cliente": "concedida em 2026-09-26",
+      "fotos": [
+        {
+          "ordem": 1,
+          "arquivo": "01-entregue-balcao-de-recepcao-com-a-marca.jpg",
+          "etapa": "entregue",
+          "legenda": "Balcao de recepcao com a marca",
+          "largura": 865,
+          "altura": 1080,
+          "origem": "foto do post DOy3vcKD9Ev",
+          "link_post": "https://www.instagram.com/p/DOy3vcKD9Ev/"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "02-entregue-recepcao.jpg",
+          "etapa": "entregue",
+          "legenda": "Recepcao",
+          "largura": 865,
+          "altura": 1080,
+          "origem": "foto do post DOy3vcKD9Ev",
+          "link_post": "https://www.instagram.com/p/DOy3vcKD9Ev/"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "03-entregue-area-de-convivencia.jpg",
+          "etapa": "entregue",
+          "legenda": "Area de convivencia",
+          "largura": 897,
+          "altura": 1122,
+          "origem": "foto do post DOy3vcKD9Ev",
+          "link_post": "https://www.instagram.com/p/DOy3vcKD9Ev/"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "04-entregue-copa.jpg",
+          "etapa": "entregue",
+          "legenda": "Copa",
+          "largura": 865,
+          "altura": 1080,
+          "origem": "foto do post DOy3vcKD9Ev",
+          "link_post": "https://www.instagram.com/p/DOy3vcKD9Ev/"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "05-entregue-espaco-interno.jpg",
+          "etapa": "entregue",
+          "legenda": "Espaco interno",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DTaOwutjgAO",
+          "link_post": "https://www.instagram.com/p/DTaOwutjgAO/"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "06-entregue-espaco-expositivo.jpg",
+          "etapa": "entregue",
+          "legenda": "Espaco expositivo",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DTaOwutjgAO",
+          "link_post": "https://www.instagram.com/p/DTaOwutjgAO/"
+        }
+      ]
+    },
+    {
+      "slug": "apartamento-110m2-buritis",
+      "pasta": "05-apartamento-110m2-buritis",
+      "titulo": "Apartamento de 110 m2 em 4 meses",
+      "capa": "02-projeto-projeto-3d-da-suite.jpg",
+      "publicado": true,
+      "autorizacao_cliente": "concedida em 2026-09-26",
+      "fotos": [
+        {
+          "ordem": 1,
+          "arquivo": "01-antes-suite-antes-da-reforma.jpg",
+          "etapa": "antes",
+          "legenda": "Suite antes da reforma",
+          "largura": 720,
+          "altura": 400,
+          "origem": "foto do post DdmU9_GFkrD",
+          "link_post": "https://www.instagram.com/p/DdmU9_GFkrD/"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "02-projeto-projeto-3d-da-suite.jpg",
+          "etapa": "projeto",
+          "legenda": "Projeto 3D da suite",
+          "largura": 1080,
+          "altura": 608,
+          "origem": "foto do post DdmU9_GFkrD",
+          "link_post": "https://www.instagram.com/p/DdmU9_GFkrD/"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "03-projeto-projeto-3d-do-escritorio.jpg",
+          "etapa": "projeto",
+          "legenda": "Projeto 3D do escritorio",
+          "largura": 1080,
+          "altura": 608,
+          "origem": "foto do post Db6MAiglr3H",
+          "link_post": "https://www.instagram.com/p/Db6MAiglr3H/"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "04-obra-escolha-de-revestimentos-com-os-clientes.jpg",
+          "etapa": "obra",
+          "legenda": "Escolha de revestimentos com os clientes",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DbTRMOGtjtx",
+          "link_post": "https://www.instagram.com/p/DbTRMOGtjtx/"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "05-obra-obra-em-andamento.jpg",
+          "etapa": "obra",
+          "legenda": "Obra em andamento",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DbTRMOGtjtx",
+          "link_post": "https://www.instagram.com/p/DbTRMOGtjtx/"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "06-obra-montagem-da-marcenaria.jpg",
+          "etapa": "obra",
+          "legenda": "Montagem da marcenaria",
+          "largura": 720,
+          "altura": 1280,
+          "origem": "frame de video do reel DbTRMOGtjtx",
+          "link_post": "https://www.instagram.com/p/DbTRMOGtjtx/"
+        }
+      ]
+    },
+    {
+      "slug": "rua-andaluzita-savassi",
+      "pasta": "06-rua-andaluzita-savassi",
+      "titulo": "Rua Andaluzita, Savassi",
+      "capa": "03-entregue-cozinha-entregue.jpg",
+      "publicado": true,
+      "autorizacao_cliente": "concedida em 2026-09-26",
+      "fotos": [
+        {
+          "ordem": 1,
+          "arquivo": "01-antes-cozinha-antes-e-estudo-3d.jpg",
+          "etapa": "antes",
+          "legenda": "Cozinha antes e estudo 3D",
+          "largura": 360,
+          "altura": 314,
+          "origem": "frame de video do reel DN-56o3Da1H",
+          "link_post": "https://www.instagram.com/p/DN-56o3Da1H/"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "02-projeto-projeto-3d-da-cozinha.jpg",
+          "etapa": "projeto",
+          "legenda": "Projeto 3D da cozinha",
+          "largura": 360,
+          "altura": 314,
+          "origem": "frame de video do reel DN-56o3Da1H",
+          "link_post": "https://www.instagram.com/p/DN-56o3Da1H/"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "03-entregue-cozinha-entregue.jpg",
+          "etapa": "entregue",
+          "legenda": "Cozinha entregue",
+          "largura": 360,
+          "altura": 314,
+          "origem": "frame de video do reel DN-56o3Da1H",
+          "link_post": "https://www.instagram.com/p/DN-56o3Da1H/"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "04-entregue-sala-com-varanda.jpg",
+          "etapa": "entregue",
+          "legenda": "Sala com varanda",
+          "largura": 360,
+          "altura": 314,
+          "origem": "frame de video do reel DN-56o3Da1H",
+          "link_post": "https://www.instagram.com/p/DN-56o3Da1H/"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "05-entregue-banheiro-entregue.jpg",
+          "etapa": "entregue",
+          "legenda": "Banheiro entregue",
+          "largura": 360,
+          "altura": 314,
+          "origem": "frame de video do reel DN-56o3Da1H",
+          "link_post": "https://www.instagram.com/p/DN-56o3Da1H/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+﻿PERLA CONSTRUTORA - FOTOS POR PROJETO (v2)
+
+6 pastas, uma por projeto (35 fotos). Nome = ordem-etapa-descricao.jpg
+Etapas: antes | projeto (imagem 3D) | obra | entregue
+manifest.json = fonte unica de verdade (titulo, capa, ordem, legenda, dimensoes).
+Todos os clientes autorizaram (26/09/2026).
+
+Copiar a pasta perla-projetos para /projetos do site. NAO renomear, NAO mover fotos entre pastas.
+Instrucoes: Perla-especificacao-paginas-de-projeto.docx
