@@ -129,7 +129,6 @@ body.nav-open{overflow:hidden}
 .hero-foto{position:relative;overflow:hidden;background:var(--onix-2)}
 .hero-foto picture{position:absolute;inset:0;display:block}
 .hero-foto img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-nota{position:absolute;bottom:16px;right:16px;font-size:11px;letter-spacing:.06em;color:#EFE7D6;background:rgba(14,13,12,.5);padding:6px 12px;border-radius:2px}
 @media (max-width:900px){
   .hero-split{grid-template-columns:1fr;min-height:auto}
   .hero-foto{aspect-ratio:4/3;order:2}
@@ -189,9 +188,22 @@ section[id]{scroll-margin-top:88px}
 .bgvideo{position:absolute;inset:0;z-index:-2;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat}
 .bgvideo-el{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bgvideo-failed .bgvideo-el{display:none}
-.bgvideo-scrim{position:absolute;inset:0;z-index:-1;background:rgba(244,238,230,.86)}
+.bgvideo-scrim{position:absolute;inset:0;z-index:-1;background:rgba(244,238,230,.68)}
+/* Véu por seção, em degradê: mais sólido só na faixa onde o texto corrido (sem cartão próprio)
+   fica exposto direto sobre o vídeo; no resto da seção (molduras, vãos, atrás dos cartões que já
+   são opacos por conta própria) o véu cai para a faixa 60–70% pedida, deixando cena e movimento
+   reconhecíveis. Números/gráfico (#custo .split) e depoimentos (.quotes figure) continuam com
+   superfície 100% opaca própria — não dependem deste véu para contraste. */
+#custo .bgvideo-scrim{background:linear-gradient(180deg,rgba(244,238,230,.82) 0%,rgba(244,238,230,.82) 22%,rgba(244,238,230,.62) 42%,rgba(244,238,230,.62) 100%)}
+#depoimentos .bgvideo-scrim{background:linear-gradient(180deg,rgba(244,238,230,.82) 0%,rgba(244,238,230,.82) 20%,rgba(244,238,230,.64) 40%,rgba(244,238,230,.64) 100%)}
+/* #metodo tem texto exposto na faixa de cima (título+abas) E na coluna direita de cada etapa
+   (a foto real, já opaca, ocupa a esquerda) — por isso o véu combina duas camadas: um reforço só
+   no topo (título/abas) com um degradê horizontal permanente (mais leve perto da foto, mais
+   sólido do lado do texto). */
+#metodo .bgvideo-scrim{background:
+  linear-gradient(180deg,rgba(244,238,230,.66) 0%,rgba(244,238,230,.66) 26%,rgba(244,238,230,0) 40%),
+  linear-gradient(90deg,rgba(244,238,230,.6) 0%,rgba(244,238,230,.6) 46%,rgba(244,238,230,.76) 62%,rgba(244,238,230,.76) 100%)}
 .bgvideo-controls{position:absolute;top:20px;right:var(--gutter);z-index:2;display:flex;align-items:center;gap:10px}
-.bgvideo-tag{font-size:10.5px;letter-spacing:.1em;color:var(--tinta-2);background:rgba(255,253,248,.85);padding:6px 10px;border:1px solid var(--linha-p);white-space:nowrap}
 .bgvideo-toggle{appearance:none;cursor:pointer;flex:0 0 auto;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,253,248,.85);border:1px solid var(--linha-p);color:var(--tinta);transition:border-color .2s ease,background-color .2s ease}
 .bgvideo-toggle:hover{border-color:var(--ouro-paper)}
 .bgvideo-toggle:focus-visible{outline:1px solid var(--ouro);outline-offset:3px}
@@ -199,7 +211,7 @@ section[id]{scroll-margin-top:88px}
 .bgvideo-toggle .ico-play{display:none}
 .bgvideo-toggle[aria-pressed="true"] .ico-play{display:block}
 .bgvideo-toggle[aria-pressed="true"] .ico-pause{display:none}
-@media (max-width:640px){.bgvideo-controls{right:20px;top:16px;flex-direction:row-reverse}.bgvideo-tag{font-size:9.5px;padding:5px 8px}}
+@media (max-width:640px){.bgvideo-controls{right:20px;top:16px}}
 
 /* ============ O CUSTO (seção clara) ============ */
 .paper{background:var(--papel);color:var(--tinta)}
@@ -497,9 +509,8 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
       <source media="(max-width:640px)" srcset="assets/img/hero/hero-casa-piscina-960.webp" type="image/webp">
       <source media="(max-width:640px)" srcset="assets/img/hero/hero-casa-piscina-960.jpg">
       <source srcset="assets/img/hero/hero-casa-piscina-1920.webp" type="image/webp">
-      <img src="assets/img/hero/hero-casa-piscina-1920.jpg" alt="Casa contemporânea com deck de madeira, revestimento em pedra clara e piscina — imagem ilustrativa" width="1920" height="1281" loading="eager" fetchpriority="high">
+      <img src="assets/img/hero/hero-casa-piscina-1920.jpg" alt="Casa contemporânea com deck de madeira, revestimento em pedra clara e piscina — foto de banco de imagens, não é uma obra executada pela Perla" width="1920" height="1281" loading="eager" fetchpriority="high">
     </picture>
-    <span class="hero-nota">Imagem ilustrativa</span>
   </div>
 </header>
 
@@ -529,8 +540,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
   </div>
   <div class="bgvideo-scrim" aria-hidden="true"></div>
   <div class="bgvideo-controls">
-    <p class="bgvideo-tag">Vídeo ilustrativo</p>
-    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo de fundo ilustrativo">
+    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo">
       <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
       <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
     </button>
@@ -572,8 +582,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
   </div>
   <div class="bgvideo-scrim" aria-hidden="true"></div>
   <div class="bgvideo-controls">
-    <p class="bgvideo-tag">Vídeo ilustrativo</p>
-    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo de fundo ilustrativo">
+    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo">
       <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
       <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
     </button>
@@ -718,7 +727,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
       </article>
     </div>
     <div class="values" data-reveal-group>
-      <div><b>Sem RT</b><span>Não recebemos comissão de fornecedor. Você escolhe pelo que faz sentido.</span></div>
+      <div><b>Sem comissão de fornecedores</b><span>Não recebemos comissão de fornecedor. Você escolhe pelo que faz sentido.</span></div>
       <div><b>Preço de custo</b><span>Material e mão de obra repassados sem margem escondida.</span></div>
       <div><b>Obra no seu celular</b><span>Fotos diárias, compras e medições no app.</span></div>
       <div><b>Relatório semanal</b><span>Previsto x realizado, toda semana.</span></div>
@@ -735,8 +744,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
   </div>
   <div class="bgvideo-scrim" aria-hidden="true"></div>
   <div class="bgvideo-controls">
-    <p class="bgvideo-tag">Vídeo ilustrativo</p>
-    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo de fundo ilustrativo">
+    <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo">
       <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
       <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
     </button>
@@ -783,8 +791,7 @@ footer.rodape-claro .legal{grid-column:1/-1;border-top:1px solid var(--linha-p);
           </video>
         </div>
         <div class="bgvideo-controls">
-          <p class="bgvideo-tag">Vídeo ilustrativo</p>
-          <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo ilustrativo do cartão de contato">
+          <button type="button" class="bgvideo-toggle" data-video-toggle aria-pressed="false" aria-label="Pausar vídeo">
             <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
             <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
           </button>
@@ -1003,9 +1010,11 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
 // recebe `src` quando a seção fica perto da área visível (não os 4 de uma vez no carregamento da
 // página) e pausa ao sair da área visível (economia de bateria/CPU, sem descarregar o vídeo). Sob
 // prefers-reduced-motion:reduce, sem IntersectionObserver, ou se o navegador falhar ao reproduzir,
-// nenhum vídeo toca — fica só o poster (imagem estática), nunca uma área em branco. O botão de
-// pausar tem prioridade sobre a visibilidade: uma vez pausado manualmente, só volta a tocar se o
-// usuário clicar de novo.
+// nenhum vídeo toca sozinho — fica só o poster (imagem estática), nunca uma área em branco. O
+// botão de pausar/tocar sempre reflete o estado real do <video> (via eventos play/pause, não uma
+// suposição): se o navegador bloquear o autoplay (comum em alguns celulares), o botão já nasce
+// mostrando "tocar", e o clique — sendo uma ação manual e deliberada da pessoa — sempre tenta
+// reproduzir, mesmo sob motion reduzido (que só impede o autoplay automático por scroll).
 (function () {
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var blocos = Array.prototype.slice.call(document.querySelectorAll('[data-video-bg]'));
@@ -1018,15 +1027,28 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
     if (!video || !fontes.length) return;
     var userPaused = false, carregado = false, visivel = false;
 
+    function carregar() {
+      if (carregado) return;
+      fontes.forEach(function (s) { s.src = s.getAttribute('data-src'); });
+      video.load();
+      carregado = true;
+    }
+    function sincronizarBotao() {
+      if (!toggle) return;
+      var tocando = !video.paused;
+      toggle.setAttribute('aria-pressed', tocando ? 'false' : 'true');
+      var label = toggle.getAttribute('aria-label');
+      toggle.setAttribute('aria-label', tocando ? label.replace('Reproduzir', 'Pausar') : label.replace('Pausar', 'Reproduzir'));
+    }
+    video.addEventListener('play', sincronizarBotao);
+    video.addEventListener('pause', sincronizarBotao);
+
     function tentarTocar() {
+      // disparo automático (observer de visibilidade) — nunca ocorre sob motion reduzido
       if (reducedMotion || userPaused || !visivel) return;
-      if (!carregado) {
-        fontes.forEach(function (s) { s.src = s.getAttribute('data-src'); });
-        video.load();
-        carregado = true;
-      }
+      carregar();
       var p = video.play();
-      if (p && p.catch) p.catch(function () { /* autoplay recusado — poster continua visível */ });
+      if (p && p.catch) p.catch(sincronizarBotao); // autoplay recusado — botão passa a mostrar "tocar"
     }
 
     function falhou() { bloco.classList.add('bgvideo-failed'); }
@@ -1037,16 +1059,21 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'Int
 
     if (toggle) {
       toggle.addEventListener('click', function () {
-        userPaused = !userPaused;
-        toggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
-        toggle.setAttribute('aria-label', userPaused
-          ? toggle.getAttribute('aria-label').replace('Pausar', 'Retomar')
-          : toggle.getAttribute('aria-label').replace('Retomar', 'Pausar'));
-        if (userPaused) video.pause(); else tentarTocar();
+        if (video.paused) {
+          // clique manual: sempre tenta tocar, independente de motion reduzido ou de já ter
+          // sido marcado como "pausado pelo usuário" antes (é exatamente o pedido dela agora).
+          userPaused = false;
+          carregar();
+          var p = video.play();
+          if (p && p.catch) p.catch(sincronizarBotao);
+        } else {
+          userPaused = true;
+          video.pause();
+        }
       });
     }
 
-    if (!reducedMotion && 'IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           visivel = entry.isIntersecting;
